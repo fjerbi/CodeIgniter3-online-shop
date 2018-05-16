@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "technipack-203619",
+  "private_key_id": "c428af251ba1f482ba37220693834c85d200e0ae",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDwnie3LizQ4vkm\nq/7N4t7J3/7cYXFJ32qAjB0OjPAwZ7RhLUMm35b0viQuO0Bwl9jDlztuAmouVhqs\njhcGttkZDQNF0rowmFJItosGopk+d2UP1qm2iQSp4TEum6pfx4Ds0Oo5hcK5z9dI\nNVGLESMVnjppd7Vu9ZUg5210KGGub6SWXT/nqEbSsi9jfqfJ0aU/gLWmY16v3Wmd\nSXKOIeMOYCECGBJt1eCP1kpCnZEDQvsAtJ2ErH3O1RrCwSeUHYl0NpOcuGaXEB1Y\n4a8jo071ifTePHdorF4Fq+eCCOaM5gs/C5fhmI4bIVXjm3tZvGmFNWz1SFLepqUs\nQhP6NZ9DAgMBAAECggEAMpsYwEKCY3ZxL0x6PSQLdkrZh9EoqgBGnn2ZeN90fsG4\n4r1Jw8m/rn61DlIg5e1RxiUu9x6j5VXvqz4BIsTfGREvEIbW6PSITcmyqLUW5Nfo\nlfGwZPchV3dIyEQuC5HikCwKLwnuX/USEppAKa7zgY7zOw5Vxt34vOBfmVAK50wk\nW3l2hz7bqB2XHj2C6gIkfGxzsRcj50Cqe6eelxn1dbEygo++r57WbAvKtpH3LmYE\nAl8fPHtz0TNUQ7iC+uu5A4Um7GmhlWF5YdYexfPmkNR4lg8COMhS5+4DjntnTy6j\ncwu8SkkSa3SifQSgfxvZ+a+d1fUqpPsCu068wUbR5QKBgQD52vr6ZKCSa5kvwAMB\naP0Z4gfeb+O03XKVmFZkCo/noIbssY46RuZj6KsO9wEAmOZPA0KCC6f1HFfmXaak\ngFvW4BX86SXyqIoUvCQWXCcLmUtPXRr0fE9Ax4EljHE2H7vB13SiB2ORoVL8QbHT\nmqrtYTuT7ey+s5ArryQ4mgajtwKBgQD2iQR1qIWMIxj5xdAK3eF4pHMb2S6e2Oqi\nKeOb1y9GcT6P95tFO8FcOhFHyciRaWIdjAl3JZNHq6kq3bhn8+G38RKMcE8nZtjk\nUwPr0UUlybZ/yqGrMXtnNtBKBlPWOuOkY9gD3YGYhAnqIIWyCmmHQXfT2tQ+xsqE\nQU/3LdvY1QKBgDNF/eUui0kg7ZG//J3odrA+E1FRctAl9aK/XVMwW7Gz3pxqH37U\nF+l+0MPEap89wV2LlLVtQO1rAJrUsyLk+HPTDpAVJGV0sslohptUE+ssbSj/OU3c\nyMLJbjZPaNgrkPNJjLTHgWZcTdRYgu6iudr27iwAUmocHUTprywyZ5RnAoGAeeOQ\ncuOY84o+xO8KRvUgjtcvmisso5i3mOmBAQHI+9jth5xyBi7fEMwc0xNuuIYT3mvo\nGiJXyO2UO/9XNv4bMShddVXprJ9qyKhKngLfXyl1s4TpnYxfaM5u+MpcFOUUu6gp\nmu+fLVrK1Bi0QSxotFin9/SPT2JVqkHoWVsxAOkCgYEA3NgZN1TNZpVZNdhKo3NC\nOiJ9H9GIopofYGSFSYbB4TVARE9OVL4798b9gA7OgC+w5wqq2NM+G2iv79bp+vsB\nFEskJ38fp+77Aoz4rNlbpJ2k6B1RsyqoiTBbstUOnE3syoDlGQ/vyMYjSfXIn+Zh\npR5N88aSm/BGHsUBQ/8dkl8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "technipack@technipack-203619.iam.gserviceaccount.com",
+  "client_id": "103986320173660131984",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/technipack%40technipack-203619.iam.gserviceaccount.com"
+}
