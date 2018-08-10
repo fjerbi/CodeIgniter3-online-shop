@@ -23,5 +23,7 @@ Email configuration :
 -Configure your sandbox.paypal account or your paypal account (application/modules/parametres_web/controllers/Parametre_web.php)
 ## Admin Dashboard
 To access the admin dashboard (yourprojecturl/auth/login)
+
 Username :admin@gmail.com
+
 Password:123456123456
