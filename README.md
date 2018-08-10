@@ -28,24 +28,12 @@ codeigniter/
 
 ## Installation
 
-Install this project with Composer:
-
-~~~
-$ cd /path/to/codeigniter/
-$ composer require kenjis/codeigniter-deployer:1.0.x@dev --dev
-~~~
-
-Install `deploy` folder to your CodeIgniter application folder:
-
-~~~
-$ php vendor/kenjis/codeigniter-deployer/install.php
-~~~
-
-* Above command always overwrites exisiting files.
-* You must run it at CodeIgniter project root folder.
+1-Clone the project to your htdocs directory
+2-Configure the Database(application/config/database.php)
+3-Configure the config file(application/config/config.php)
 
 ## Configuration
-
-Configure `deploy/deployer.php`.
+Email configuration : 
+-Configure the email configuration file(application/config/email.php) for the forgotten password and validating register with the email
 
 
