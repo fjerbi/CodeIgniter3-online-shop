@@ -39,14 +39,6 @@ echo form_hidden('shipping_'.$count, $shipping);
 
 
            
- <div class='cart-submit'>
-                <div class='cart-coupon'>
-                
-                   
-                </div>
-                
-              <a href="payement/create">  <button value="Submit" type="button" name="submit" class="cart-submit-btn"> Payer Livraison</button></a>
-            </div>
 
 <?php
 

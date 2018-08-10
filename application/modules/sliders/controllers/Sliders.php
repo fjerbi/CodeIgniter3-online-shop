@@ -6,8 +6,22 @@ function __construct() {
 parent::__construct();
 }
 
+function _attempt_draw_slider() {
+  $this->load->helper('url');
 
+ $current_url = current_url();
+ $query_ads = $this->get_where_custom('target_url', $current_url);
+ $num_rows_ads = $query_ads->num_rows();
+ if($num_rows_ads>0){
+  $this->load->module('slides');
+  foreach($query_ads->result() as $row){
+    $parent_id = $row->id;
+  }
+  $data['query_slides'] = $this->slides->get_where_custom('parent_id', $parent_id);
+  $this->load->view('slider', $data);
+ }
 
+ }
 function delete($update_id)
     {
 
@@ -16,14 +30,14 @@ function delete($update_id)
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+//$this->securite->_verify_admin();
 
 $submit = $this->input->post('submit',TRUE);
 if($submit=="Cancel"){
     redirect('sliders/create/'.$update_id);
 }elseif ($submit="Oui") {
     $this->_process_delete($update_id);
-$flash_msg="L'image est supprimé.";
+$flash_msg="Le slider est supprimé.";
  $value='<div class="alert alert-success" role="alert">'.$flash_msg.'</div>';
  $this->session->set_flashdata('item', $value);
 redirect('sliders/manage');
@@ -35,12 +49,15 @@ redirect('sliders/manage');
 function _process_delete($update_id)
 {
 
-//suppression de tout les produits associé avec cette image
+//suppression de tout les sliders associé avec cette slider
 
-  $mysql_query = "delete from slides where block_id=$update_id";
-  $query = $this->_custom_query($mysql_query);
+$this->load->module('slides');
+$query= $this->slides->get_where_custom('parent_id', $update_id);
+foreach($query->result() as $row){
+  $this->slides->_process_delete($row->id);
+}
 
-//suppression de la page
+//suppression du slider
 $this->_delete($update_id);
 
 }
@@ -53,7 +70,7 @@ function deleteconf($update_id)
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+//$this->securite->_verify_admin();
 $data['headline'] = "Supprimer l'image";
   $data['update_id']=$update_id;
 $data['flash'] = $this->session->flashdata('item');
@@ -92,7 +109,7 @@ $this->load->module('custom_pagination');
 
 //fetch les details des produits
 
-$data = $this->fetch_data_from_db($update_id);
+$data = $this->fetch_db($update_id);
 
 //compter les details des produits qui correspondent a chaque catégorie
 $use_limit = FALSE;
@@ -187,7 +204,7 @@ return $offset;
 function sort()
 {
       $this->load->module('securite');
-$this->securite->_verify_admin();
+//$this->securite->_verify_admin();
 $number = $this->input->post('number', TRUE);
 for ($i=1; $i <= $number ; $i++) { 
   $update_id = $_POST['order'.$i];
@@ -197,21 +214,25 @@ for ($i=1; $i <= $number ; $i++) {
 }
 
 //retourne le nombre de sous catégories pour chaque catégorie
-
+ function _get_title($update_id)
+{
+$title=$this->_get_titre_slider($update_id);
+return $title;
+}
 function _get_titre_slider($update_id)
 {
- $data = $this->fetch_data_from_db($update_id);
+ $data = $this->fetch_db($update_id);
  $titre_slider = $data['titre_slider'];
  return $titre_slider;
 }
 
-function fetch_data_from_post(){
+function fetch_post(){
 
 $data['titre_slider'] = $this->input->post('titre_slider',TRUE);
 $data['target_url'] = $this->input->post('target_url',TRUE);
 return $data;
 }
-function fetch_data_from_db($update_id){
+function fetch_db($update_id){
 
     if(!is_numeric($update_id)){
         redirect('securite/error');
@@ -236,7 +257,7 @@ return $data;
  function  create(){
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+//$this->securite->_verify_admin();
 
 
   $update_id= $this->uri->segment(3);
@@ -253,7 +274,7 @@ if($submit =="Cancel"){
          
          
            if($this->form_validation->run($this) ==TRUE){
-            $data = $this->fetch_data_from_post();
+            $data = $this->fetch_post();
 
 
             if (is_numeric($update_id)){
@@ -284,10 +305,10 @@ redirect('sliders/create/'.$update_id);//remember the flash data
        }
 
        if((is_numeric($update_id)) && ($submit!="Submit")){
-$data =$this->fetch_data_from_db($update_id);
+$data =$this->fetch_db($update_id);
 
        }else{
-        $data =$this->fetch_data_from_post();
+        $data =$this->fetch_post();
 
        }
 
@@ -319,8 +340,9 @@ function  manage(){
         $this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
+//$this->securite->_verify_admin();
 $data['query']= $this->get('titre_slider');
+$data['num_rows']= $data['query']->num_rows();
 $data['sort_categ'] = TRUE;
  $data['flash'] = $this->session->flashdata('item');
 $data['view_file']="manage";

@@ -4,6 +4,15 @@ class Categories extends MX_Controller
   
 function __construct() {
 parent::__construct();
+$this->load->database();
+    $this->load->library(array('ion_auth','form_validation'));
+    $this->load->helper(array('url','language'));
+    $this->load->library('email');
+$this->email->set_newline("\r\n");
+
+    $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+    $this->lang->load('auth');
 }
 
 
@@ -12,7 +21,7 @@ function _get_complete_url_categorie($update_id)
 $this->load->module('parametre_web');
 $items_segments = $this->parametre_web->_get_items_segments();
 
-$data = $this->fetch_data_from_db($update_id);
+$data = $this->fetch_db($update_id);
 
 $url_categorie = $data['url_categorie'];
 $complete_url_categorie = base_url().$items_segments.$url_categorie;
@@ -31,7 +40,7 @@ $this->load->module('custom_pagination');
 
 //fetch les details des produits
 
-$data = $this->fetch_data_from_db($update_id);
+$data = $this->fetch_db($update_id);
 
 //compter les details des produits qui correspondent a chaque catégorie
 $use_limit = FALSE;
@@ -145,7 +154,7 @@ $data['parent_categories']= $parent_categories;
 
 function _get_parent_nom_categorie($update_id)
 {
-  $data= $this->fetch_data_from_db($update_id);
+  $data= $this->fetch_db($update_id);
   $id_categorie_parent=$data['id_categorie_parent'];
 $parent_nom_categorie= $this->_get_nom_categorie($id_categorie_parent);
 return $parent_nom_categorie;
@@ -169,12 +178,13 @@ return $sub_categories;
 function sort()
 {
       $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 $number = $this->input->post('number', TRUE);
 for ($i=1; $i <= $number ; $i++) { 
   $update_id = $_POST['order'.$i];
   $data['priorite'] = $i;
   $this->_update($update_id, $data);
+}
 }
 }
 function _create_sortable_list($id_categorie_parent){
@@ -195,18 +205,18 @@ return $num_rows;
 }
 function _get_nom_categorie($update_id)
 {
- $data = $this->fetch_data_from_db($update_id);
+ $data = $this->fetch_db($update_id);
  $nom_categorie = $data['nom_categorie'];
  return $nom_categorie;
 }
-function fetch_data_from_post(){
+function fetch_post(){
 
 $data['nom_categorie'] = $this->input->post('nom_categorie',TRUE);
 $data['id_categorie_parent'] = $this->input->post('id_categorie_parent',TRUE);
 return $data;
 }
 
-function fetch_data_from_db($update_id){
+function fetch_db($update_id){
 
     if(!is_numeric($update_id)){
         redirect('securite/error');
@@ -246,8 +256,7 @@ function _get_dropdown_options($update_id)
  function  create(){
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
-
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
   $update_id= $this->uri->segment(3);
        $submit =$this->input->post('submit',TRUE);
@@ -261,7 +270,7 @@ if($submit =="Cancel"){
         $this->form_validation->set_rules('nom_categorie','Category Title','required|max_length[240]');
          
            if($this->form_validation->run($this) ==TRUE){
-            $data = $this->fetch_data_from_post();
+            $data = $this->fetch_post();
 
  $data['url_categorie']= url_title($data['nom_categorie']);
             if (is_numeric($update_id)){
@@ -292,10 +301,10 @@ redirect('categories/create/'.$update_id);//remember the flash data
        }
 
        if((is_numeric($update_id)) && ($submit!="Submit")){
-$data =$this->fetch_data_from_db($update_id);
+$data =$this->fetch_db($update_id);
 
        }else{
-        $data =$this->fetch_data_from_post();
+        $data =$this->fetch_post();
 
        }
 
@@ -319,7 +328,7 @@ $data['flash'] = $this->session->flashdata('item');
     $this->templates->admin($data);
 
     }
-
+}
 
 
 function  manage(){
@@ -327,7 +336,7 @@ function  manage(){
         $this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 $id_categorie_parent = $this->uri->segment(3);
 if(!is_numeric($id_categorie_parent)){
@@ -344,7 +353,7 @@ $data['view_file']="manage";
 $this->load->module('templates');
 $this->templates->admin($data);
 
-    }
+    }}
 function get($order_by) {
 $this->load->model('mdl_categories');
 $query = $this->mdl_categories->get($order_by);

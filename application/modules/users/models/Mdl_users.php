@@ -10,6 +10,21 @@ $table = "utilisateurs";
 return $table;
 }
 
+
+
+
+ public function getUserInfoByEmail($email)
+    {
+        $q = $this->db->get_where('utilisateurs', array('email' => $email), 1);  
+        if($this->db->affected_rows() > 0){
+            $row = $q->row();
+            return $row;
+        }else{
+            error_log('no user found getUserInfo('.$email.')');
+            return false;
+        }
+    }
+
 function get($order_by) {
 $table = $this->get_table();
 $this->db->order_by($order_by);

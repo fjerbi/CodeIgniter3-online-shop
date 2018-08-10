@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+
+* {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+body {
+	background: url(../images/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+	
+.login-form {
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	max-width: 460px;
+}
+	.login-form > section {
+		padding: 35px 35px 25px 35px;
+		border-radius: 5px;
+	}
+	.login-form a {
+		color: #fff;
+	}
+	.login-form img {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 55px;
+	}
+
+form[role=login] {
+	font: 14px/2.2em Lato, serif;
+	color: #aaa;
+}	
+	form[role=login] input,
+	form[role=login] > button {
+		font-size: 15px;
+		padding: 10px 30px;
+	}
+	form[role=login] input {
+		color: #777;
+		background: rgba(180,180,180,.9);
+		border: none;
+		height: 2.6em;
+		padding: 10px 40px;
+		border-radius: 3px;
+		-webkit-box-shadow: inset 0 0 1px 1px rgba(150, 150, 150, .1);
+		   -moz-box-shadow: inset 0 0 1px 1px rgba(150, 150, 150, .1);
+		        box-shadow: inset 0 0 1px 1px rgba(150, 150, 150, .1);
+	}
+	form[role=login] > div {
+		margin: 30px 0;
+		position: relative; 
+	}
+	form[role=login] > button {
+		margin-top: 15px;
+		margin-bottom: 15px;
+		background: #0c56a9;
+		border: 1px solid #0c4584;
+	}
+	
+.form-control + .glyphicon {
+    position: absolute;
+    left: 0;
+	top: 14%;
+    padding: 8px 0 0 17px;
+	font-size: 15px;
+	color: #757575;
+}

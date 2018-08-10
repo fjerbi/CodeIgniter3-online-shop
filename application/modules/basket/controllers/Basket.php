@@ -115,7 +115,7 @@ function _search_data()
 	$this->load->module('securite');
 
 	$id_produit = $this->input->post('id_produit', TRUE);
-	$item_data = $this->items->fetch_data_from_db($id_produit);
+	$item_data = $this->items->fetch_db($id_produit);
 	$prix_produit = $item_data['prix_produit'];
 	$quantite_produit = $this->input->post('quantite_produit', TRUE);
 

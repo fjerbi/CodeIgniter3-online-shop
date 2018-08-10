@@ -12,7 +12,7 @@ if(isset($flash)){
 <div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon white edit"></i><span class="break"></span>Iportation avec réussit</h2>
+						<h2><i class="halflings-icon white edit"></i><span class="break"></span>Importation avec réussit</h2>
 						<div class="box-icon">
 							
 							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -21,7 +21,7 @@ if(isset($flash)){
 					</div>
 					<div class="box-content">
   
-<div class="alert alert-success">Your file was successfully uploaded!</div>
+<div class="alert alert-success">Votre fichier a était importé avec succées</div>
 
 <ul>
 <?php foreach ($upload_data as $item => $value):?>

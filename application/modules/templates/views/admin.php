@@ -93,23 +93,25 @@
                     
                    
                     <li><a href="<?= base_url() ?>dashboard/home"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Accueil</span></a></li>
-                    <li><a href="<?= base_url()?>order_status/manage"><i class="icon-envelope"></i><span class="hidden-tablet">Statut commandes</span></a></li>
+                    <li><a href="<?= base_url()?>order_status/manage"><i class="icon-file"></i><span class="hidden-tablet">États commandes</span></a></li>
+
 
 <?php
 echo Modules::run('order_status/_left_nav_links');
 ?>
                      <li><a href="<?= base_url() ?>items/manage"><i class="icon-tag"></i><span class="hidden-tablet"> Gérer les produits</span></a></li>
 
-                      <li><a href="<?= base_url() ?>categories/manage"><i class="icon-align-justify"></i><span class="hidden-tablet"> Gérer les catégories</span></a></li>
+                      <li><a href="<?= base_url() ?>categories/manage"><i class="icon-sitemap"></i><span class="hidden-tablet"> Gérer les catégories</span></a></li>
                       <li><a href="<?= base_url() ?>home_offers/manage"><i class="icon-gift"></i><span class="hidden-tablet"> Gérer les offres </span></a></li>
                      <li><a href="<?= base_url() ?>users/manage"><i class="icon-briefcase"></i><span class="hidden-tablet"> Gérer les comptes</span></a></li>
                      <li><a href="<?= base_url() ?>cms_webpages/manage"><i class="icon-file"></i><span class="hidden-tablet"> Gérer les pages </span></a></li>
                      <li><a href="<?= base_url() ?>blog/manage"><i class="icon-file-alt"></i><span class="hidden-tablet">Gérer le Blog </span></a></li>
                     <li><a href="<?= base_url()?>user_messages/inbox"><i class="icon-envelope"></i><span class="hidden-tablet"> Messages</span></a></li>
-                    
+                    <li><a href="<?= base_url()?>sliders/manage"><i class="icon-picture"></i><span class="hidden-tablet"> Gérer les images défilantes</span></a></li>
+                    <li><a href="<?= base_url()?>auth/index"><i class="icon-user"></i><span class="hidden-tablet"> Controle utilisateurs</span></a></li>
 
      <li><a href="<?= base_url()?>backup/backup_bdd"><i class="halflings-icon refresh"></i><span class="hidden-tablet"> Réstoration BASE DE DONNEES</span></a></li>
-                     <li><a href="<?= base_url()?>admnlgn/logout"><i class=" halflings-icon off"></i><span class="hidden-tablet"> Déconnexion</span></a></li>
+                     <li><a href="<?= base_url()?>auth/logout"><i class=" halflings-icon off"></i><span class="hidden-tablet"> Déconnexion</span></a></li>
 
                    
                 </ul>

@@ -4,12 +4,22 @@ class Users extends MX_Controller
 
 function __construct() {
 parent::__construct();
+ $this->load->database();
+    $this->load->library(array('ion_auth','form_validation'));
+    $this->load->helper(array('url','language'));
+    $this->load->library('email');
+$this->email->set_newline("\r\n");
+
+    $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+    $this->lang->load('auth');
 }
+
 
 function _get_client_address($update_id, $delimiter)
 {
   //retourne l'adresse du client(acheteur)
-  $data = $this->fetch_data_from_db($update_id);
+  $data = $this->fetch_db($update_id);
   $address ='';
   if($data['address1']!=''){
 $address.=$data['address1'];
@@ -35,17 +45,26 @@ $address.=$delimiter;
   }
 return $address; 
 }
-function role()
+function actif()
 {
- $type = $this->fetch_data_from_db($type);
+ $update_id = $this->uri->segment(3);
+
+$query = $this->get_where($update_id);
+
+foreach($query->result() as $row)
+{
+
+$data['active'] = $row->active;
+
  
-if($type =='admin'){
+if($data['active'] =='1'){
   return TRUE;
 }else{
   return FALSE;
 }
 
 
+}
 }
 function num_users()
 {
@@ -55,7 +74,7 @@ echo $num->num_rows();
 }
 function _generate_token($update_id)
 {
-$data = $this->fetch_data_from_db($update_id);
+$data = $this->fetch_db($update_id);
 $date_creation = $data['date_creation'];
 $derniere_connexion = $data['derniere_connexion'];
 $mot_de_passe = $data['mot_de_passe'];
@@ -103,7 +122,7 @@ function _get_customer_name($update_id, $optional_user_data = NULL)
 
   if(!isset($optional_user_data)){
 
-  $data = $this->fetch_data_from_db($update_id);
+  $data = $this->fetch_db($update_id);
 }else{
   $data['nom']=$optional_user_data['nom'];
   $data['prenom']=$optional_user_data['prenom'];
@@ -143,7 +162,7 @@ if($pseudo!=""){
 function  update_pword(){
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 //echo"Test01";die();
 
 
@@ -199,9 +218,9 @@ $data['flash'] = $this->session->flashdata('account');
     $this->templates->admin($data);
 
     }
+}
 
-
-function fetch_data_from_post(){
+function fetch_post(){
 
 $data['nom'] = $this->input->post('nom',TRUE);
 $data['pseudo'] = $this->input->post('pseudo',TRUE);
@@ -218,7 +237,7 @@ $data['email'] = $this->input->post('email',TRUE);
 return $data;
 }
 
-function fetch_data_from_db($update_id){
+function fetch_db($update_id){
 
     if(!is_numeric($update_id)){
         redirect('securite/error');
@@ -241,7 +260,8 @@ $data['date_creation'] = $row->date_creation;
 $data['mot_de_passe'] = $row->mot_de_passe;
 
 $data['derniere_connexion'] = $row->derniere_connexion;
-    
+    $data['code'] = $row->code;
+$data['active'] = $row->active;
 }
 if (!isset($data)){
     $data="";
@@ -253,7 +273,7 @@ return $data;
 function  create(){
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 
 
   $update_id= $this->uri->segment(3);
@@ -268,7 +288,7 @@ if($submit =="Cancel"){
         $this->form_validation->set_rules('nom','First Name','required');
        $this->form_validation->set_rules('pseudo','Username','required');
            if($this->form_validation->run($this) ==TRUE){
-            $data = $this->fetch_data_from_post();
+            $data = $this->fetch_post();
 
 
 
@@ -299,10 +319,10 @@ redirect('users/create/'.$update_id);//
        }
 
        if((is_numeric($update_id)) && ($submit!="Submit")){
-$data =$this->fetch_data_from_db($update_id);
+$data =$this->fetch_db($update_id);
 
        }else{
-        $data =$this->fetch_data_from_post();
+        $data =$this->fetch_post();
        
        }
 
@@ -320,14 +340,15 @@ $data['flash'] = $this->session->flashdata('account');
     $this->templates->admin($data);
 
     }
-
+}
 
  function  manage(){
 
         $this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
+
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
  $data['flash'] = $this->session->flashdata('account');
 
 $data['query'] = $this->get('prenom');
@@ -338,6 +359,8 @@ $this->load->module('templates');
 $this->templates->admin($data);
 
     }
+  }
+
 
 function get($order_by) {
 $this->load->model('mdl_users');

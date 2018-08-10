@@ -6,7 +6,7 @@
 <div class="col-md-10" >
 	<?php
 	echo form_open('cart/choice_submit'); ?>
-	<button class="btn btn-success" name="submit" value="Oui, Je veux Créer mon compte" type="submit">
+	<button class="btn btn-info" name="submit" value="Oui, Je veux Créer mon compte" type="submit">
 		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 		Oui, Je veux Créer mon compte
 		

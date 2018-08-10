@@ -4,6 +4,15 @@ class Home_offers extends MX_Controller
   
 function __construct() {
 parent::__construct();
+$this->load->database();
+    $this->load->library(array('ion_auth','form_validation'));
+    $this->load->helper(array('url','language'));
+    $this->load->library('email');
+$this->email->set_newline("\r\n");
+
+    $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+    $this->lang->load('auth');
 }
 
 
@@ -16,7 +25,7 @@ function delete($update_id)
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 $submit = $this->input->post('submit',TRUE);
 if($submit=="Cancel"){
@@ -31,7 +40,7 @@ redirect('home_offers/manage');
 
 
     }
-
+}
 function _process_delete($update_id)
 {
 
@@ -53,7 +62,7 @@ function deleteconf($update_id)
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 $data['headline'] = "Supprimer l'offre";
   $data['update_id']=$update_id;
 $data['flash'] = $this->session->flashdata('item');
@@ -62,7 +71,7 @@ $data['flash'] = $this->session->flashdata('item');
     $this->templates->admin($data);
 
 }
-
+}
 function _create_sortable_list(){
 
 
@@ -92,7 +101,7 @@ $this->load->module('custom_pagination');
 
 //fetch les details des produits
 
-$data = $this->fetch_data_from_db($update_id);
+$data = $this->fetch_db($update_id);
 
 //compter les details des produits qui correspondent a chaque catégorie
 $use_limit = FALSE;
@@ -187,7 +196,7 @@ return $offset;
 function sort()
 {
       $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 $number = $this->input->post('number', TRUE);
 for ($i=1; $i <= $number ; $i++) { 
   $update_id = $_POST['order'.$i];
@@ -195,23 +204,24 @@ for ($i=1; $i <= $number ; $i++) {
   $this->_update($update_id, $data);
 }
 }
+}
 
 //retourne le nombre de sous catégories pour chaque catégorie
 
 function _get_titre_block($update_id)
 {
- $data = $this->fetch_data_from_db($update_id);
+ $data = $this->fetch_db($update_id);
  $titre_block = $data['titre_block'];
  return $titre_block;
 }
 
-function fetch_data_from_post(){
+function fetch_post(){
 
 $data['titre_block'] = $this->input->post('titre_block',TRUE);
 
 return $data;
 }
-function fetch_data_from_db($update_id){
+function fetch_db($update_id){
 
     if(!is_numeric($update_id)){
         redirect('securite/error');
@@ -235,7 +245,7 @@ return $data;
  function  create(){
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 
   $update_id= $this->uri->segment(3);
@@ -250,7 +260,7 @@ if($submit =="Cancel"){
         $this->form_validation->set_rules('titre_block','Block Title','required|max_length[240]');
          
            if($this->form_validation->run($this) ==TRUE){
-            $data = $this->fetch_data_from_post();
+            $data = $this->fetch_post();
 
 
             if (is_numeric($update_id)){
@@ -281,10 +291,10 @@ redirect('home_offers/create/'.$update_id);//remember the flash data
        }
 
        if((is_numeric($update_id)) && ($submit!="Submit")){
-$data =$this->fetch_data_from_db($update_id);
+$data =$this->fetch_db($update_id);
 
        }else{
-        $data =$this->fetch_data_from_post();
+        $data =$this->fetch_post();
 
        }
 
@@ -295,7 +305,7 @@ $data =$this->fetch_data_from_db($update_id);
         $data['headline'] ="Mettre à jour l'offre :".$titre_block;
        }
 
-
+}
 
 //test nb categorie
 //echo $data['num_dropdown_options'];die();
@@ -316,14 +326,13 @@ function  manage(){
         $this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
-
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 $data['sort_categ'] = TRUE;
  $data['flash'] = $this->session->flashdata('item');
 $data['view_file']="manage";
 $this->load->module('templates');
 $this->templates->admin($data);
-
+}
     }
 function get($order_by) {
 $this->load->model('mdl_home_offers');

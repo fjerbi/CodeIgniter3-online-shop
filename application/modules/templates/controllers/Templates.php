@@ -1,13 +1,27 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+date_default_timezone_set('Etc/UTC');
 class Templates extends MX_Controller
 {
 
 function __construct() {
 parent::__construct();
+$this->load->library('ip2location_lib');
 }
 
 
+ 
 
+function index()
+{
+	
+	if(!isset($data['view_module'])){
+		$data['view_module'] = $this->uri->segment(1);
+	}
+
+	$this->load->module('securite');
+	$data['customer_id'] = $this->securite->_get_user_id();
+    $this->load->view('main_page',$data);
+}
 function blog($data)
 {
 if(!isset($data['view_module'])){
@@ -84,14 +98,7 @@ function  main_page($data){
     $this->load->view('main_page',$data);
 
 }
-    function  public_jqm($data){
-    	
-	if(!isset($data['view_module'])){
-		$data['view_module'] = $this->uri->segment(1);
-	}
-        $this->load->view('public_jqm',$data);
-
-    }
+   
 
  
 

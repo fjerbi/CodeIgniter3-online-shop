@@ -26,7 +26,7 @@ if (is_numeric($id_produit)) {?>
 <?php
 if($image_produit =="") {?>
 
-  <a href="<?= base_url() ?>items/upload_image/<?= $id_produit ?>"><button type="button" class="btn btn-primary">Upload l'image du produit</button></a>
+  <a href="<?= base_url() ?>items/upload_image/<?= $id_produit ?>"><button type="button" class="btn btn-primary">importer l'image du produit</button></a>
  <?php
 
 }else {
@@ -90,12 +90,17 @@ $form_location=base_url()."items/create/".$id_produit;
 							  <label class="control-label" for="typeahead">Quantité du produit</label>
 							  <div class="controls">
 								<input type="text" class="span1" name="quantite_produit" value="<?= $quantite_produit ?>">
+								<div class="control-group">
+							  <label class="control-label" for="typeahead">frais de livraison du produit</label>
+							  <div class="controls">
+								<input type="text" class="span1" name="shipping" value="<?= $shipping ?>">
 							
 							  </div>
 							  <br>
 							<div class="control-group">
-							  <label class="control-label" for="typeahead">Status</label>
+							  <label class="control-label" for="typeahead">Statut</label>
 							  <div class="controls">
+
 <?php
 
 $additional_dd_code='id="selectError3"';
@@ -130,8 +135,8 @@ echo form_dropdown('status', $options,$status,$additional_dd_code);
 							  </div>
 							</div>
 							<div class="form-actions">
-							  <button type="submit" class="btn btn-primary" name="submit" value="Submit">Save changes</button>
-							  <button type="submit" class="btn" name="submit" value="Cancel">Cancel</button>
+							  <button type="submit" class="btn btn-primary" name="submit" value="Submit">OK</button>
+							  <button type="submit" class="btn" name="submit" value="Cancel">ANNULER</button>
 							</div>
 						  </fieldset>
 						</form>   

@@ -12,6 +12,16 @@ $thumbnail_path = base_url().'blog_pics/'.$thumbnail_name;
 
   ?>
 
+
+                    <h1 class="main-ttl"><span>CONSULTER LA MÉTEO</span></h1>
+<li>
+                       <a href="<?= base_url() ?>weather/forecast"><button class="btn btn-info"> Méteo </button></a><img src="<?php echo base_url();?>mojs/meteo.png" style="width: 90px; height: 90px; margin-left: 50px; margin-top: 50px;" >
+                    </li>
+
+                         
+
+
+
 <h1 class="main-ttl"><span><?= $row->titre_page ?></span></h1>
         <!-- Blog Post - start -->
         <div class="post-wrap stylization">
@@ -78,6 +88,7 @@ $thumbnail_path = base_url().'blog_pics/'.$thumbnail_name;
 <?php
 }
 ?>
+
 
 <?php
 /*

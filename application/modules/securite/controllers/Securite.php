@@ -4,6 +4,7 @@ class Securite extends MX_Controller
 
     function __construct() {
         parent::__construct();
+        
     }
 
 function test()
@@ -23,6 +24,17 @@ if(($pseudo==$target_username) && ($mot_de_passe==$target_pass)){
 
 
 }
+function check_login()
+{
+    //vérifier si l'utilisateur est connectée
+    $user_id = $this->_get_user_id();
+    if(!is_numeric($user_id)){
+        return FALSE;
+    }else{
+      return TRUE;
+    }
+}
+
 function _check_logged_in()
 {
     //vérifier si l'utilisateur est connectée
@@ -304,7 +316,7 @@ from, to {
 
 <head>
   <meta charset='UTF-8'>
-  <title>Error 404</title>
+  <title>Erreur 404</title>
   
   
   
@@ -317,7 +329,7 @@ from, to {
   <div id='oopss'>
 <div id='error-text'>
 <span>404</span>
-<p>Erreur !!</p>
+<p>Vous n'avez pas l'autorisation pour accéder a cette séction du site, veuillez vous connecter ici  !!</p>
 </div>
 </div>
   
@@ -336,5 +348,6 @@ from, to {
 
 
     ";
+
 }
 }

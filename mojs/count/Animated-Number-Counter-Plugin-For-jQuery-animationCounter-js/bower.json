@@ -1,0 +1,44 @@
+{
+  "name": "animationCounter.js",
+  "title": "animationCounter.js",
+  "description": "animationCounter.js is a jQuery plugin that animates a number from a value to an other or to a value to an infinite number",
+  "keywords": [
+    "jquery",
+    "animate",
+    "animationCounter",
+    "animated",
+    "animation",
+    "counter",
+    "count",
+    "number"
+  ],
+  "version": "1.0.0",
+  "author": {
+    "name": "Micheline Pavadé",
+    "url": "https://github.com/mpavade"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "homepage": "https://mpavade.github.io/animationCounter.js/demo/",
+  "download": "https://github.com/mpavade/animationCounter.js/archive/master.zip",
+  "dependencies": {
+    "jquery": ">=1.7.0"
+  },
+  "main": "animationCounter.js",
+  "authors": [
+    "Micheline Pavadé"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "demo",
+    ".DS_Store"
+  ]
+}

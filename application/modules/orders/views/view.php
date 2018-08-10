@@ -10,11 +10,7 @@ if(isset($flash)){
 }
 ?>
 
-<p style="text-align: right;">
-	<a href="<?= base_url() ?>paypal/pdf">
-		<button class="btn btn-success">Voir le PDF</button>
-	</a>
-</p>
+
 <?php
 echo Modules::run('paypal/_display_info', $id_paypal);
 if (is_numeric($update_id)) {?>

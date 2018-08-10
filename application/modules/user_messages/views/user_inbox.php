@@ -40,7 +40,7 @@ $view_url = base_url()."messages/view/".$row->code;
                   }else{
                     $icon = '<span style="color: orange;" class="glyphicon glyphicon-envelope" aria-hidden="true"></span>';
                   }
-                  $date_sent = $this->timedate->get_date($row->date_creation,'cool');
+                  $date_sent = $this->timedate->get_date($row->date_creation,'datepicker');
               
 
               if($row->envoye_par ==0){

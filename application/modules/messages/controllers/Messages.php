@@ -22,7 +22,7 @@ $this->load->module('securite');
 $this->load->module('users');
      $this->load->module('timedate');
         $submit =$this->input->post('submit',TRUE);
-       $data =$this->fetch_data_from_post();
+       $data =$this->fetch_post();
        $customer_id = $this->securite->_get_user_id();
 $code = $this->uri->segment(3);
 
@@ -89,7 +89,7 @@ redirect($target_url);//memoriser le flash data
            }
        }elseif ($code!="") {
          $data = $this->user_messages->_get_data_from_code($customer_id, $code);
-         $data['message']="------------------------------".$data['message'];
+         $data['message']="VEUILLEZ RÉPONDRE ICI.".$data['message'];
        }
 
 
@@ -119,7 +119,7 @@ $data['flash'] = $this->session->flashdata('item');
       $msg = strip_tags($msg);
       return $msg;
     }
-    function fetch_data_from_post(){
+    function fetch_post(){
 
 $data['sujet'] = $this->input->post('sujet',TRUE);
 $data['message'] = $this->input->post('message',TRUE);
@@ -156,7 +156,7 @@ foreach($query->result() as $row){
 
 $data['code'] = $code;
 
-$data['date_creation'] = $this->timedate->get_date($date_creation,'full' );
+$data['date_creation'] = $this->timedate->get_date($date_creation,'datepicker' );
 
 	$this->user_messages->_set_to_opened($update_id);	
 $data['flash'] = $this->session->flashdata('item');	

@@ -6,53 +6,7 @@ function __construct() {
 parent::__construct();
 }
 
-function test()
-{
-echo anchor('web_cookies/test_set', 'Set The Cookie');
-echo "<hr>";
-echo anchor('web_cookies/test_destroy', 'Destroy The Cookie');
 
-$user_id = $this->_get_user_id();
-
-if(is_numeric($user_id)){
-	echo "<h1> Tu es l utilisateur $user_id </h1>";
-
-
-}
-
-
-}
-
-function test_set()
-{
-$user_id = 88;
-$this->_set_cookie($user_id);
-echo "The cookie has now been set <br>";
-
-echo anchor('web_cookies/test', 'Get The Cookie');
-echo "<hr>";
-
-echo anchor('web_cookies/test_destroy', 'Destroy The Cookie');
-
-
-}
-
-
-
-function test_destroy()
-{
-
-
-$this->_destroy_cookie();
-echo "the cookie has been destroyed<br>";
-
-echo anchor('web_cookies/test', 'Attempt to Get The Cookie');
-echo "<hr>";
-
-echo anchor('web_cookies/test_set', 'Set The Cookie');
-
-
-}
 
 function _set_cookie($user_id)
 {

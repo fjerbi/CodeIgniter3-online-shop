@@ -4,6 +4,15 @@ class Store_cat_assign extends MX_Controller
 
 function __construct() {
 parent::__construct();
+	$this->load->database();
+		$this->load->library(array('ion_auth','form_validation'));
+		$this->load->helper(array('url','language'));
+		$this->load->library('email');
+$this->email->set_newline("\r\n");
+
+		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+		$this->lang->load('auth');
 }
 
 
@@ -14,7 +23,7 @@ function delete($update_id)
 	}
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 
 //fetch l'id du produit
 $query = $this->get_where($update_id);
@@ -30,6 +39,7 @@ $this->session->set_flashdata('item',$value);
 
 redirect('store_cat_assign/update/'.$id_produit);
 }
+}
 function submit($id_produit)
 {
 	if(!is_numeric($id_produit)){
@@ -37,7 +47,7 @@ function submit($id_produit)
 	}
 		$this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 $submit = $this->input->post('submit',TRUE);
 $id_cat =trim($this->input->post('id_cat', TRUE));
 if($submit=="Finished"){
@@ -59,6 +69,7 @@ $nom_categorie = $this->categories->_get_nom_categorie($id_cat);
 }
 redirect('store_cat_assign/update/'.$id_produit);
 }
+}
 
 function update($id_produit)
 {
@@ -67,7 +78,7 @@ function update($id_produit)
 	}
 	$this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 	//recuperer un tableau de tout les sous catégories
 $this->load->module('categories');
 $sub_categories = $this->categories->_get_all_sub_cats_dpdown();
@@ -102,6 +113,7 @@ $this->templates->admin($data);
 //foreach ($sub_categories as $key => $value) {
 	//echo $value."<br>";
 //}
+}
 }
 function get($order_by) {
 $this->load->model('mdl_store_cat_assign');

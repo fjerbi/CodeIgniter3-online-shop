@@ -51,10 +51,7 @@ function get_customer_name($nom, $prenom, $societe)
 
 
   $paypal_url="http://www.paypal.com";
-  ?><p style="margin-top:30px">
-		<a href="<?= $paypal_url ?>"><button type="submit" class="btn btn-primary">Visiter Paypal</button>
-
-    </p>
+  ?>
 
 
 

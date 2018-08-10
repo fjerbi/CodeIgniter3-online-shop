@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery animationCounter.js Plugin Demos</title>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+  </head>
+  <body>
+  <div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="http://www.jqueryscript.net/animation/Animated-Number-Counter-Plugin-For-jQuery-animationCounter-js.html">Download This Plugin</a></li>
+<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+      <div class="main" style="margin-top:150px;">
+          <div class="intro">
+            <h1 class="title-plugin">animationCounter.js</h1>
+          </div>
+          <div class="block-wrapper">
+              <div class="block">
+                  <p><span class="lnr lnr-heart"></span></p>
+                  <p class="counter-wrapper"><span class="fb"></span></p>
+                  <p class="text-block">like</p>
+              </div>
+              <div class="block">
+                  <p><span class="lnr lnr-code"></span></p>
+                  <p class="counter-wrapper"><span class="code"></span></p>
+                  <p class="text-block">code</p>
+              </div>
+              <div class="block">
+                  <p><span class="lnr lnr-bicycle"></span></p>
+                  <p class="counter-wrapper"><span class="bike"></span></p>
+                  <p class="text-block">bicycle</p>
+              </div>
+              <div class="block">
+                  <p><span class="lnr lnr-history"></span></p>
+                  <p class="counter-wrapper"><span class="coffee"></span></p>
+                  <p class="text-block">coffee</p>
+              </div>
+            </div>
+            <footer>
+              <p>Copyright (c) 2017 <a href="http://www.pixel-renaissance.com">Micheline Pavadé</a></p>
+            </footer>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="../animationCounter.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    $('#counter-block').ready(function(){
+        $('.fb').animationCounter({
+          start: 0,
+          step: 1,
+          delay:100
+        });
+        $('.bike').animationCounter({
+          start: 245677,
+          step: 100,
+          delay:2000,
+          txt: ' km'
+        });
+        $('.code').animationCounter({
+          start: 0,
+          end: 570,
+          step: 4,
+          delay: 1000
+        });
+        $('.coffee').animationCounter({
+          start: 490,
+          end: 1560,
+          step: 20,
+          delay: 900,
+          txt: ' cl'
+        });
+    });
+    </script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>

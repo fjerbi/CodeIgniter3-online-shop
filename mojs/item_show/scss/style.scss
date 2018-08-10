@@ -1,0 +1,324 @@
+$color-black: #293035;
+$color-white: #fff;
+$color-blue: #037bdf;
+$color-purple: #613790;
+$color-green: #2ecc71;
+$color-gray: #edecea;
+$color-dgray: #a3a5a6;
+$color-pink: #df7ca4;
+$color-teal: #00a6a0;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+body {
+  background: $color-gray;
+  color: $color-white;
+  font-family: sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+}
+
+figure {
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.site-header {
+  background: $color-purple;
+  box-shadow: 0 3px 6px rgba(black, .16), 0 3px 6px rgba(black, .22);
+  line-height: 64px;
+  height: 64px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.logo-menu {
+  float: left;
+  padding: 0 16px;
+  a {
+    color: $color-white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  img {
+    display: block;
+    padding: 14px 0 0 0;
+    height: auto;
+    width: 80%;
+  }
+}
+
+.main-menu {
+  float: right;
+  padding: 0 16px 0;
+  text-align: right;
+  line-height: 64px;
+
+  .menu-item {
+    color: $color-white;
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 28px 0 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    .fa {
+      font-size: 28px;
+      line-height: 64px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+.site-main {
+  width: 100%;
+  position: relative;
+}
+
+.site-wrap {
+  marign: 0 auto;
+  max-width: 80%;
+}
+
+.heading {
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.0;
+  &.title-main {
+    font-size: 32px;
+  }
+}
+
+.content {
+  margin: 0;
+  padding: 8px;
+  &.page-content {
+    letter-spacing: 1px;
+  }
+}
+
+.page {
+  margin: 0 auto;
+  padding: 128px 0 0 0;
+  text-align: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+.browse-tile {
+  background: $color-white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(black, .08), 0 1px 3px rgba(black, .12);
+  display: inline-block;
+  float: none;
+  margin: 0 16px 16px 0;
+  padding: 16px;
+  width: 256px;
+  overflow: hidden;
+  position: relative;
+  transition: all .5s ease-in-out 0s;
+  &:last-child {
+    margin: 0 0 16px 0;
+  }
+  &:after {
+    content: "";
+    background: $color-blue;
+    height: 2px;
+    position: absolute;
+    top: 255px;
+    right: 0;
+    left: 0;
+    z-index: 0;
+  }  
+  &:hover {
+    box-shadow: 0 3px 6px rgba(black, .16), 0 3px 6px rgba(black, .22);
+  }
+  .browse-tile-info-container {
+    background: rgba($color-purple, .99);
+    border-top: solid 1px rgba($color-white, .5);
+    color: $color-white;
+    font-size: 12px;
+    padding: 16px;
+    text-align: left;
+    opacity: 0;
+    position: absolute;
+    /*top: 0;*/
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    transform: translate(0, 100%);
+    transition: all .5s ease-in-out 0s;
+    h3 {
+      border-bottom: solid 1px $color-white;
+      font-size: 16px;
+      margin: 0 0 8px 0;
+    }
+  }
+  input.browse-tile-info {
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    opacity: 0;
+    left: 16px;
+    z-index: 4;
+    -webkit-appearance: none;
+    &:checked ~ .browse-tile-info-container {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+    &:hover ~ .browse-tile-info {
+      color: $color-teal;
+    }
+  }
+  .browse-tile-info {
+    color: $color-dgray;
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    position: absolute;
+    top: 16px;
+    left: 14px;
+    z-index: 3;
+    transition: all .35s ease-in-out 0s;
+    &:checked ~ .browse-tile-info {
+      color: $color-teal;
+    }
+    &:checked ~ .browse-tile-info:after {
+      opacity: 1;
+      transform: scale(1);
+    }
+    &:before {
+      text-align: center;
+      width: 24px;
+    }
+    &:after {
+      content: "";
+      background: rgba($color-teal, .15);
+      border-radius: 50%;
+      height: 45px;
+      width: 45px;
+      opacity: 0;
+      position: absolute;
+      top: -12px;
+      left: -10px;
+      z-index: 2;
+      transition: all .35s ease-in-out 0s, border .5s ease-in-out 0s;
+      transform: scale(0);
+    }    
+  }
+  input.browse-tile-add-to-wishlist {
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    opacity: 0;
+    z-index: 3;
+    &:checked ~ .browse-tile-add-to-wishlist {
+      color: $color-pink;
+      &:after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    &:hover ~ .browse-tile-add-to-wishlist {
+      color: $color-pink;
+    }
+  }
+  .browse-tile-add-to-wishlist {
+    color: $color-dgray;
+    font-size: 24px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    transition: all .35s ease-in-out 0s;
+    &:after {
+      content: "";
+      background: rgba($color-pink, .15);
+      border-radius: 50%;
+      height: 45px;
+      width: 45px;
+      opacity: 0;
+      position: absolute;
+      top: -12px;
+      right: -10px;
+      z-index: 2;
+      transition: all .35s ease-in-out 0s, border .5s ease-in-out 0s;
+      transform: scale(0);
+    }
+  }
+  .browse-tile-prod-thumb {
+    padding: 0 0 32px 0;
+    img {
+      max-width: 100%;
+    }
+  }
+  .browse-tile-product-price {
+    background: $color-blue;
+    border-radius: 16px;
+    color: $color-white;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 2px 16px 0 16px;
+    line-height: 30px;
+    position: absolute;
+    top: 240px;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, 0);
+  }
+  .browse-tile-title a {
+    color: $color-blue;
+    display: block;
+    font-weight: 700;
+    text-align: center;
+  }
+  .browse-tile-ratings-reviews {
+    color: $color-purple;
+    padding: 4px 0;
+    text-align: center;
+  }
+  .browse-tile-primary-action a {
+    background: $color-white;
+    border: solid 2px $color-blue;
+    border-radius: 4px;
+    color: $color-blue;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 8px 0 0 0;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 32px;
+    transition: all .35s ease-in-out 0s;
+    &:hover {
+      background: $color-blue;
+      color: white;
+    }
+  }
+}

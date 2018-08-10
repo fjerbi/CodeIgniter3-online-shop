@@ -1,0 +1,26 @@
+{
+    "name": "kenjis/codeigniter-deployer",
+    "type": "project",
+    "description": "A Deployment Tool for CodeIgniter 3.0",
+    "keywords": [
+        "deploy",
+        "deployment",
+        "codeigniter"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kenji Suzuki",
+            "homepage": "https://github.com/kenjis/codeigniter-deployer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "deployer/deployer": "~3.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

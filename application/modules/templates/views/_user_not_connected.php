@@ -2,15 +2,15 @@
         <div class="container header-middle-cont">
             <div class="toplogo">
                 <a href="<?php echo base_url(); ?>">
-                    <img src="<?php echo base_url();?>technipack_pictures/technipacklogo.png" alt="Technipack - Technique de packaging">
+                    <img src="<?php echo base_url();?>technipack_pictures/technipacklogo.png" alt="Technipack - Technique de packaging" style="margin-left: 500px;">
                 </a>
             </div>
             <div class="shop-menu">
                 <ul>
 
-                   
+                   <br>  <br>  <br>
 
-                    <li class="topauth">
+                    <li class="topauth" style="margin-left: 150px;">
                         <a href="<?= base_url();?>youraccount/createaccount">
                             <i class="fa fa-lock"></i>
                             <span class="shop-menu-ttl">INSCRIPTION</span>
@@ -43,6 +43,19 @@
                         </div>
                     </li>
 
+
+ <li>
+                        <div class="h-cart">
+                            <a href="<?php echo base_url()?>chatroom/chatroom.php">
+                              <i class="fa fa-comments-o"></i>
+                                <span class="shop-menu-ttl">NOTRE CHATROOM</span>
+                               
+                            </a>
+                        </div>
+                    </li>
+
+
+ 
                 </ul>
             </div>
         </div>

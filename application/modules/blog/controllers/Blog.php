@@ -4,13 +4,22 @@ class Blog extends MX_Controller
 
 function __construct() {
 parent::__construct();
+$this->load->database();
+    $this->load->library(array('ion_auth','form_validation'));
+    $this->load->helper(array('url','language'));
+    $this->load->library('email');
+$this->email->set_newline("\r\n");
+
+    $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+    $this->lang->load('auth');
 }
 
 function articles()
 {
   $this->load->module('securite');
 
-$data = $this->fetch_data_from_post();
+$data = $this->fetch_post();
   $data['flash'] = $this->session->flashdata('item');
  $this->load->helper('text');
 $mysql_query="select * from blog order by date_publication desc limit 0,3";
@@ -36,9 +45,9 @@ function delete_image($update_id)
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 
-$data = $this->fetch_data_from_db($update_id);
+$data = $this->fetch_db($update_id);
 $image = $data['image'];
 
 $product_image_path ='./blog_pics/'.$image;
@@ -62,7 +71,7 @@ $flash_msg="L image de l'article est supprimée avec succes.";
            $this->session->set_flashdata('item', $value);
 redirect('blog/create/'.$update_id);
 }
-
+}
 
 
 
@@ -74,7 +83,7 @@ function do_upload($update_id)
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 
 $submit = $this->input->post('submit', TRUE);
 if($submit == "Cancel"){
@@ -126,8 +135,8 @@ $update_data['image'] = $file_name;
 
 $this->_update($update_id, $update_data);
 
-//mettre a jour la BDD
-    $data['headline'] = "Succes d Import";
+
+    $data['headline'] = "Importation de l'image réussi";
     $data['update_id']=$update_id;
     $data['flash'] = $this->session->flashdata('item');
     $data['view_file']="upload_success";
@@ -139,6 +148,7 @@ $this->_update($update_id, $update_data);
     
                 }
         }
+      }
 
 
 function _generate_thumbnail($file_name,$thumbnail_name)
@@ -168,7 +178,7 @@ if(!is_numeric($update_id)) {
 
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 
 
 
@@ -180,7 +190,7 @@ $data['flash'] = $this->session->flashdata('item');
     $this->load->module('templates');
     $this->templates->admin($data);
 
-     
+     }
     }
 
 function test()
@@ -217,7 +227,7 @@ $this->_delete($update_id);
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 
 $submit = $this->input->post('submit',TRUE);
 if($submit=="Cancel"){
@@ -232,7 +242,7 @@ redirect('blog/manage');
 
 
     }
-
+}
 
 
 function deleteconf($update_id)
@@ -243,7 +253,7 @@ function deleteconf($update_id)
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 $data['headline'] = "Supprimer la page";
   $data['update_id']=$update_id;
 $data['flash'] = $this->session->flashdata('item');
@@ -252,10 +262,11 @@ $data['flash'] = $this->session->flashdata('item');
     $this->templates->admin($data);
 
 }
+}
  function  create(){
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 
 
   $update_id= $this->uri->segment(3);
@@ -281,9 +292,10 @@ if($submit =="Cancel"){
 
 
            if($this->form_validation->run($this) ==TRUE){
-            $data = $this->fetch_data_from_post();
+            $data = $this->fetch_post();
 
 $data['url_page'] = url_title($data['titre_page']);
+
 //convertir la date en variable unix timestamp
 
 $data['date_publication'] = $this->timedate->make_timestamp_from_datepicker_us($data['date_publication']);
@@ -314,10 +326,10 @@ redirect('blog/create/'.$update_id);//remember the flash data
        }
 
        if((is_numeric($update_id)) && ($submit!="Submit")){
-$data =$this->fetch_data_from_db($update_id);
+$data =$this->fetch_db($update_id);
 
        }else{
-        $data =$this->fetch_data_from_post();
+        $data =$this->fetch_post();
         
        }
 
@@ -339,9 +351,9 @@ $data['flash'] = $this->session->flashdata('item');
 
     }
 
-
+}
 //depuis le formulaire
-function fetch_data_from_post(){
+function fetch_post(){
 
 $data['titre_page'] = $this->input->post('titre_page',TRUE);
 $data['motcle_page'] = $this->input->post('motcle_page',TRUE);
@@ -352,7 +364,7 @@ $data['auteur'] = $this->input->post('auteur',TRUE);
 return $data;
 }
 //depuis la base de données
-function fetch_data_from_db($update_id){
+function fetch_db($update_id){
 
     if(!is_numeric($update_id)){
         redirect('securite/error');
@@ -383,7 +395,7 @@ function  manage(){
         $this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
  $data['flash'] = $this->session->flashdata('item');
 
 $data['query'] = $this->get('date_publication desc');
@@ -394,7 +406,7 @@ $this->load->module('templates');
 $this->templates->admin($data);
 
     }
-
+}
 function get($order_by) {
 $this->load->model('mdl_blog');
 $query = $this->mdl_blog->get($order_by);

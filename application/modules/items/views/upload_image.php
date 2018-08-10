@@ -37,8 +37,8 @@ $attributes = array('class' => 'form-horizontal');
 							</div>          
 							
 							<div class="form-actions">
-							  <button type="submit" class="btn btn-primary">Upload</button>
-							  <button type="submit" name ="submit" value ="Cancel" class="btn">Cancel</button>
+							  <button type="submit" class="btn btn-primary">OK</button>
+							  <button type="submit" name ="submit" value ="Cancel" class="btn">ANNULER</button>
 							</div>
 						  </fieldset>
 						</form>   

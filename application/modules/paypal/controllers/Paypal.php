@@ -59,7 +59,7 @@ if(($test_paypal== FALSE) OR(!is_numeric($num_orders))) {
 }
 
 //simuler une creation commande
-$id_paypal=66;
+$id_paypal=3;
 $this->load->module('orders');
 $this->load->module('securite');
 
@@ -199,6 +199,7 @@ function _test_paypal()
 function _payement_btn($query)
 {
 	$this->load->module('shipping');
+	$this->load->module('items');
 	$this->load->module('securite');
 	$this->load->module('parametre_web');
 
@@ -209,9 +210,9 @@ function _payement_btn($query)
 	$test_paypal= $this->_test_paypal();
 
 	if($test_paypal==TRUE){
-		$data['form_location']='https://www.sandbox.paypal.com/cgi-bin/webscr';//test paypal
+		$data['form_location']='https://www.sandbox.paypal.com/cgi-bin/webscr';//démo paypal
 	}else{
-		$data['form_location']='https://www.paypal.com/cgi-bin/webscr';//official paypal
+		$data['form_location']='https://www.paypal.com/cgi-bin/webscr';//payement réél paypal
 	}
 
 $data['test_paypal']= $test_paypal;

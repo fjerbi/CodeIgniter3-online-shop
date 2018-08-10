@@ -55,43 +55,9 @@ return $session_id;
 
 }
 
-function test()
-{
-	$string="salut cv ";
-	$this->load->module('securite');
-	$encrypted_string= $this->securite->_encrypt_string($string);
-	$decrypted_string= $this->securite->_decrypt_string($encrypted_string);
-
-echo "string est $string<hr>";
-echo "encrypted string is $encrypted_string<hr>";
-echo "decrypted string is $decrypted_string<hr>";
-
-}
-
-function test2()
-{
-	$this->load->module('securite');
-	$string="salut cv ";
-	$third_bit = $this->uri->segment(3);
-	if($third_bit!=''){
-		$encrypted_string=$third_bit;
-	}else{
-
-$encrypted_string= $this->securite->_encrypt_string($string);
-	}
 	
 	
-	$decrypted_string= $this->securite->_decrypt_string($encrypted_string);
-
-echo "string est $string<hr>";
-echo "encrypted string is $encrypted_string<hr>";
-echo "decrypted string is $decrypted_string<hr>";
-
-//creer une nouvelle chaine de caractéres crypté
-$new_encrypted_string = $this->securite->_encrypt_string($string);
-echo anchor('cart/test2/'.$new_encrypted_string,'refresh');
-
-}
+	
 
 function _generate_guest_account($checkout_token)
 {

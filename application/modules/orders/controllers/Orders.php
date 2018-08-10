@@ -4,6 +4,16 @@ class Orders extends MX_Controller
 
 function __construct() {
 parent::__construct();
+
+    $this->load->database();
+    $this->load->library(array('ion_auth','form_validation'));
+    $this->load->helper(array('url','language'));
+    $this->load->library('email');
+$this->email->set_newline("\r\n");
+
+    $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+    $this->lang->load('auth');
 }
 
 
@@ -24,7 +34,7 @@ function _auto_notify($update_id)
   $status_title = $this->order_status->_get_status_name($order_status);
 
   //un message pour le client
-  $msg= 'Commande'.$libelle_commande.'a été mise à jour.';
+  $msg= 'Commande'.' '.$order_ref.' a été mise à jour.';
   $msg.='Le nouveau statut de votre commande est'.$status_title.'.';
 
 //envoyer le messag de notification
@@ -70,7 +80,7 @@ function save_order_status()
 
   $update_id = $this->uri->segment(3);
    $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 $submit = $this->input->post('submit', TRUE);
 $statut_commande = $this->input->post('statut_commande', TRUE);
 
@@ -99,7 +109,7 @@ redirect('orders/view/'.$update_id);
 }
 
 }
-
+}
 function  view(){
 
 
@@ -109,7 +119,7 @@ $this->load->module('securite');
 $this->load->module('cart');
 $this->load->module('timedate');
 $this->load->module('users');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 $update_id = $this->uri->segment(3);
 $this->_set_to_opened($update_id);
@@ -142,7 +152,7 @@ $data['query_c']=$this->cart->_fetch_cart_contents($session_id,$data['id_acheteu
 
 $data['statut_commande'] = $statut_commande;
 $data['options']= $this->order_status->_dropdown_options();
-$data['users_data'] = $this->users->fetch_data_from_db($data['id_acheteur']);
+$data['users_data'] = $this->users->fetch_db($data['id_acheteur']);
 $data['customer_address']= $this->users->_get_client_address($data['id_acheteur'], '<br>');
 $data['headline']='ID de la commande'.": ".$data['libelle_commande'];
 $data['update_id']=$update_id;
@@ -153,7 +163,7 @@ $data['flash'] = $this->session->flashdata('account');
     $this->templates->admin($data);
 
     }
-
+}
 
 function  show(){
 
@@ -162,8 +172,7 @@ $this->load->module('custom_pagination');
         $this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
-
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 $use_limit = FALSE;
 $mysql_query = $this->_generate_mysql_query($use_limit);
 $query = $this->_custom_query($mysql_query);
@@ -195,6 +204,7 @@ $this->load->module('templates');
 $this->templates->admin($data);
 
     }
+  }
 
     function get_target_pagination_base_url()
 {

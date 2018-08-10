@@ -46,7 +46,7 @@ $form_location = base_url().$first_bit.'/submit_login';
   <body>
     <div id="container">
       <div id="logo_bar">
-        <img id="logo" src="<?php echo base_url();?>mojs/login/shop.png" alt="logo"> <span>TECHIPACK</span>
+        <img id="logo" src="<?php echo base_url();?>technipack_pictures/technipacklogo.png" alt="logo"> <span>TECHNIPACK</span>
       </div>
       <div id="form_box">
       <form method="post" action="<?= $form_location ?>" role="login">
@@ -61,7 +61,7 @@ if($first_bit=="youraccount"){?>
 
 }
 ?>
-          <input type="submit" value="Submit" name="submit"><br />
+          <input type="submit" value="Connexion" name="submit"><br />
           <a id="font_20">mot de passe oublié ?</a><br /><br />
         </form>
       </div>

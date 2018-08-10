@@ -1,10 +1,10 @@
 <style type="text/css">
 .sort {
 list-style: none;
-border: 1px #aaa solid;
-color: #333;
-padding: 10px;
-margin-bottom: 4px;
+border: 1px #0db0dd solid;
+color: #1c2b36;
+padding: 15px;
+margin-bottom: 10px;
 }
 </style>
 <ul id="sortlist">

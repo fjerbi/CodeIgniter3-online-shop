@@ -1,6 +1,13 @@
-<IfModule authz_core_module>
-    Require all denied
-</IfModule>
-<IfModule !authz_core_module>
-    Deny from all
-</IfModule>
+RewriteEngine on
+
+<Files "index.php">
+AcceptPathInfo On
+</Files>
+
+RewriteCond $1 !^(index\.php|resources|assets|robots\.txt)
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?/$1 [L,QSA]

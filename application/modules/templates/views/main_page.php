@@ -23,6 +23,7 @@
 
 </head>
 <body>
+
 <!-- Header - start -->
 <header class="header">
 
@@ -37,6 +38,7 @@
                     <i class="fa fa-envelope"></i> technipack@gmail.com
                 </li>
             </ul>
+            
 
             <!-- Social links -->
             <ul class="social-icons nav navbar-nav">
@@ -64,13 +66,138 @@
                     <a href="http://instagram.com" rel="nofollow" target="_blank">
                         <i class="fa fa-instagram"></i>
                     </a>
+
                 </li>
             </ul>       </div>
     </div>
 
+            <?php
+
+$this->load->library('user_agent');
+
+if ($this->agent->is_browser())
+{
+        $agent = $this->agent->browser().' '.$this->agent->version();
+}
+elseif ($this->agent->is_robot())
+{
+        $agent = $this->agent->robot();
+}
+elseif ($this->agent->is_mobile())
+{
+        $agent = $this->agent->mobile();
+}
+else
+{
+        $agent = 'Unidentified User Agent';
+}
+
+echo " <i class='fa fa-globe'></i> Votre navigateur est : "." ".$agent;
+
+echo"<br> Votre systéme d'exploitation est"." ".$this->agent->platform();
+echo "<br>votre addresse Ip".$this->input->ip_address();
+
+            ?>
 
 
-    <!-- Topbar - end -->
+      <div style="float: right;">
+  <script type="text/javascript">
+var bannersnack_embed = {"hash":"bcmeh0a0p","width":250,"height":250,"t":1529321741,"userId":36499606,"type":"html5"};
+</script>
+<script type="text/javascript" src="//cdn.bannersnack.com/iframe/embed.js"></script>
+
+</div>
+
+<?php
+
+function api()
+{
+$endpoint = 'latest';
+$access_key = 'b67049a06c7ef4187e5bd0b32ba765b2';
+
+// Initialize CURL:
+$ch = curl_init('http://data.fixer.io/api/'.$endpoint.'?access_key='.$access_key.'');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Store the data:
+$json = curl_exec($ch);
+curl_close($ch);
+
+// Decode JSON response:
+$exchangeRates = json_decode($json, true);
+
+// Access the exchange rate values, e.g. GBP:
+?><b style="color: black;">  Pound :<?php echo $exchangeRates['rates']['GBP'];
+
+?> <p style="color: black;">Dinar Tunisien :<?php echo $exchangeRates['rates']['TND'];
+?><p style="color: black;"> Dollar  :<?php echo $exchangeRates['rates']['USD'];
+?><p style="color: black;">Yen Japonais  :<?php echo $exchangeRates['rates']['JPY'];
+?><p style="color: black;"> Dollar Australien  :<?php echo $exchangeRates['rates']['AUD'];
+?> <p style="color: black;">Riyal de Qatar  :<?php echo $exchangeRates['rates']['QAR'];
+?> <p style="color: black;">Livre de Syrie  :<?php echo $exchangeRates['rates']['SYP'];
+?> <p style="color: black;">Yuan Chinois  :<?php echo $exchangeRates['rates']['CNY'];
+}
+?>
+
+<style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  background: #1a1a1a;
+  font-family: 'Arial';
+}
+
+h1 {
+  color: white;
+  margin-top: 20px;
+  font-size: 40px;
+}
+
+marquee {
+  background: #f8fafc;
+  margin: 30px auto;
+  padding: 0 10px;
+  display: block;
+  color: #fff;
+}
+
+marquee:nth-child(2) {
+  background: grey;
+}
+
+.ticker-up li {
+  margin-bottom: 15px;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+</style>
+<center>
+ 
+</center>
+<div style="float: right; margin-top: 75px;">
+<marquee 
+  direction="up" 
+  height="40px" 
+  width="380px" 
+  scrollamount="2"
+  onmouseover="this.stop();" 
+  onmouseout="this.start();"
+>
+  <ul class="ticker-up">
+     <h1>Taux de change:</h1>
+    <li><?= api() ?></li>
+    
+  </ul>
+</marquee>
+</div>
+
 
     <!-- Logo, Shop-menu - start -->
    <?= Modules::run('templates/_page_top') ?>
@@ -82,7 +209,9 @@
             <nav class="topmenu">
 
                 <!-- Catalog menu - start -->
+
                 <div class="topcatalog">
+                    
                     <a class="topcatalog-btn"><span>LES </span>CATEGORIES</a>
                 </div>
            
@@ -92,13 +221,15 @@
                     </style>
                     <div class="cats">
 
+
+
                                                                                  <?php
 echo Modules::run('categories/_create_top_nav');
 
 ?>
 </div>
                         </ul>
-                     
+                    
             
                 <!-- Main menu - end -->
 
@@ -114,56 +245,9 @@ echo Modules::run('categories/_create_top_nav');
 
             </nav>  
 
-
-
-
-
- <div class="fr-slider-wrap">
-            <div class="fr-slider">
-                <ul class="slides">
-                    <li>
-                        <img src="<?php echo base_url();?>slider_img/slider1.jpg" alt="">
-                        <div class="fr-slider-cont">
-                            <h3>DES PROMOTIONS -30%</h3>
-                            <p>Des nouveaux articles chaque semaine. <br>N'hésitez pas de consulter tous nos catégories!</p>
-                            <p class="fr-slider-more-wrap">
-                                <a class="fr-slider-more" href="#">Voir Plus</a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="<?php echo base_url();?>slider_img/slider2.jpg" alt="">
-                        <div class="fr-slider-cont">
-                            <h3>Feuillard Textile</h3>
-                            <p>Des promotions sur les Feuillards Textiles.<br></p>
-                            <p class="fr-slider-more-wrap">
-                                <a class="fr-slider-more" href="#">Acheter Maintenant</a>
-                            </p>
-                        </div>
-                    </li>
-             <li>
-                        <img src="<?php echo base_url();?>slider_img/slider2.jpg" alt="">
-                        <div class="fr-slider-cont">
-                            <h3>Feuillard Textile</h3>
-                            <p>Des promotions sur les Feuillards Textiles.<br></p>
-                            <p class="fr-slider-more-wrap">
-                                <a class="fr-slider-more" href="#">Acheter Maintenant</a>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
 <?php
+echo Modules::run('sliders/_attempt_draw_slider');
+
 // si l'utulisateur est connecté
 if($customer_id>0){
 include('user_panel_top.php');
@@ -195,11 +279,14 @@ if ($url_page="contactus") {
  ?>
 
                 </div>
+
+  
     </div>
 <br><br>
     <!-- Topmenu - end -->
 
 </header>
+
 <!-- Header - end -->
  <!-- Testimonials -->
         <div class="reviews-wrap">
@@ -221,47 +308,30 @@ if ($url_page="contactus") {
     <div class="banners-wrap">
             <div class="banners-list">
                 <div class="banner-i style_11">
-                    <span class="banner-i-bg" style="background: url(<?php echo base_url();?>technipack_pictures/feuillard.jpg);"></span>
+                    <span class="banner-i-bg" style="background: url(<?php echo base_url();?>mojs/ship.jpg);"></span>
                     <div class="banner-i-cont">
-                        <p class="banner-i-subttl">Nouveaux articles en promotions</p>
-                        <h3 class="banner-i-ttl">FEUILLARD<br>TEXTILE</h3>
-                        <p class="banner-i-link"><a href="<?= base_url();?>products/lists/Feuillard-acier">VOIR PLUS </a></p>
+               
+                        <h3 class="banner-i-ttl">PAYER EN LIGNE</h3>
+                       
                     </div>
                 </div>
                 <div class="banner-i style_22">
-                    <span class="banner-i-bg" style="background: url(<?php echo base_url();?>technipack_pictures/vulkolanrouge_transp_ml.png);"></span>
+                    <span class="banner-i-bg" style="background: url(<?php echo base_url();?>mojs/livraison.jpg); height: 300px; width: 250px"></span>
                     <div class="banner-i-cont">
-                        <p class="banner-i-subttl">DIVERS ARTICLES</p>
-                        <h3 class="banner-i-ttl">LAME<br>DE RACLE</h3>
-                        <p class="banner-i-link"><a href="">VOIR PLUS </a></p>
+                       
+                        <br><br><br><br><br><br>
+                        <h3 class="banner-i-ttl">PAYER<br>A LA LIVRAISON </h3>
+                       
                     </div>
                 </div>
-                <div class="banner-i style_21">
-                    <span class="banner-i-bg" style="background: url(<?php echo base_url();?>technipack_pictures/coussin-d-air_visuel_big.jpg);"></span>
-                    <div class="banner-i-cont">
-                        <h3 class="banner-i-ttl"> <br>Coussin d'air visuel</h3>
-                        <p class="banner-i-link"><a href="section.html">consulter la catégorie</a></p>
-                    </div>
-                </div>
-                <div class="banner-i style_21">
-                    <span class="banner-i-bg" style="background: url(<?php echo base_url();?>technipack_pictures/shipping1.jpg);"></span>
-                    
-                </div>
-                <div class="banner-i style_22">
-                    <span class="banner-i-bg" style="background: url(http://placehold.it/270x360);"></span>
-                    <div class="banner-i-cont">
-                        <p class="banner-i-subttl">PROMOTIONS -20%</p>
-                        <h3 class="banner-i-ttl">SUR 4 ARTICLES<br>ACHETE</h3>
-                        <p class="banner-i-link"><a href="section.html">Commander maintenant</a></p>
-                    </div>
-                </div>
+               
+                
+                
                 <div class="banner-i style_12">
-                    <span class="banner-i-bg" style="background: url(http://placehold.it/560x360);"></span>
+                    <span class="banner-i-bg" style="background: url(<?php echo base_url();?>mojs/commerce.png);"></span>
                     <div class="banner-i-cont">
-                        <p class="banner-i-subttl">STYLISH CLOTHES</p>
-                        <h3 class="banner-i-ttl">WOMEN'S COLLECTION</h3>
-                        <p>A great selection of dresses, <br>blouses and women's suits</p>
-                        <p class="banner-i-link"><a href="section.html">View More</a></p>
+                       
+                        <p class="banner-i-link"><a href="section.html">VOIR PLUS </a></p>
                     </div>
                 </div>
             </div>
@@ -296,11 +366,14 @@ if ($url_page="contactus") {
         <div class="container">
             <div class="row">
                 <div class="companyinfo" >
-                    <a href="<?php echo base_url(); ?>">
-                        <img src="<?php echo base_url();?>technipack_pictures/technipacklogo.png" alt="Technipack - technique de packaging"> 
-                        Vente en ligne de produits de packaging
+                   <div style="float: right;">
+  <script type="text/javascript">
+var bannersnack_embed = {"hash":"bx95euhu6","width":250,"height":250,"t":1529322105,"userId":36499606,"type":"html5"};
+</script>
+<script type="text/javascript" src="//cdn.bannersnack.com/iframe/embed.js"></script>
 
-                    </a>
+
+</div>
                 </div>
                 <div class="f-block-list">
                     <div class="f-block-wrap">
@@ -345,6 +418,7 @@ if ($url_page="contactus") {
                             <p>Pour plus d'information à propos de notre sociéte, veuillez regarder la vidéo</p>
                         </div>
                     </div>
+
                     <div class="f-block-wrap">
                         <div class="f-block">
                             <a href="#" class="f-block-btn" data-id="#f-block-modal-4">
@@ -402,14 +476,16 @@ if ($url_page="contactus") {
             </div>
         </div>
     </div>
-
+  
     <div class="container f-menu-list">
         <div class="row">
             <div class="f-menu">
                 <h3>
                      à propos
                 </h3>
+
                 <ul class="nav nav-pills nav-stacked">
+
                     <li class="active"><a href="<?= base_url() ?>">Accueil</a></li>
                     <li><a href="catalog-list.html">Catégories</a></li>
                     <li><a href="elements.html">Elements</a></li>
@@ -418,6 +494,7 @@ if ($url_page="contactus") {
                 </ul>
             </div>
            
+ <img src="<?= base_url();?>mojs/carte_credit.png" style="float: right; margin-left: 100px; width: 300px;  "> 
             <div class="f-subscribe">
                 <h3>Abonnez-vous</h3>
                 <form class="f-subscribe-form" action="#">
@@ -428,7 +505,6 @@ if ($url_page="contactus") {
             </div>
         </div>
     </div>
-
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
@@ -459,7 +535,9 @@ if ($url_page="contactus") {
                         </a>
                     </li>
                 </ul>
+
                 <div class="footer-copyright">
+                     
                     <i><a href="https://themeforest.net/user/real-web?ref=real-web">Technipack</a></i> © Copyright 2018
                 </div>
             </div>

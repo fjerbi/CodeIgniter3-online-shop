@@ -24,7 +24,7 @@ $this->load->module('securite');
          $this->form_validation->set_rules('quantite_produit','quantity','required|numeric');
          
            if($this->form_validation->run($this) ==TRUE){
-            $data = $this->fetch_data_from_post();
+            $data = $this->fetch_post();
 
 
                 // insert new item
@@ -46,7 +46,7 @@ $data['flash'] = $this->session->flashdata('item');
     $this->templates->main_page($data);
 
     }
-function fetch_data_from_post(){
+function fetch_post(){
 
 $data['nom_produit'] = $this->input->post('nom_produit',TRUE);
 $data['quantite_produit'] = $this->input->post('quantite_produit',TRUE);

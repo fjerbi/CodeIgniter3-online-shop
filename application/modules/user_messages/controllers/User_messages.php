@@ -4,6 +4,15 @@ class User_messages extends MX_Controller
 
 function __construct() {
 parent::__construct();
+ $this->load->database();
+    $this->load->library(array('ion_auth','form_validation'));
+    $this->load->helper(array('url','language'));
+    $this->load->library('email');
+$this->email->set_newline("\r\n");
+
+    $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+    $this->lang->load('auth');
 }
 function fix()
 {
@@ -60,7 +69,8 @@ function _create_user_inbox($customer_id)
 function  create(){
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
+
 
 
   $update_id= $this->uri->segment(3);
@@ -89,7 +99,7 @@ if($submit =="Cancel"){
            	
 
 
-            $data = $this->fetch_data_from_post();
+            $data = $this->fetch_post();
 
 
 //convertir la date en variable unix timestamp
@@ -114,14 +124,14 @@ redirect('user_messages/inbox');//memoriser le flash data
        }
 
        if((is_numeric($update_id)) && ($submit!="Submit")){
-$data =$this->fetch_data_from_db($update_id);
+$data =$this->fetch_db($update_id);
 $data['message'] =" Salutation
 -------------------------------------<br>
 
 
 Merci pour votre message !! Veuillez répondre ici".$data['message'];
        }else{
-        $data =$this->fetch_data_from_post();
+        $data =$this->fetch_post();
         
        }
 
@@ -139,7 +149,7 @@ $data['flash'] = $this->session->flashdata('item');
     $this->templates->admin($data);
 
     }
-
+}
 
 function _fetch_users()
 {
@@ -163,7 +173,7 @@ $customer_name = trim($customer_name);
 	
 	return $options;
 }
-function fetch_data_from_post(){
+function fetch_post(){
 
 $data['sujet'] = $this->input->post('sujet',TRUE);
 $data['message'] = $this->input->post('message',TRUE);
@@ -172,7 +182,7 @@ $data['envoye_a'] = $this->input->post('envoye_a',TRUE);
 return $data;
 }
 
-function fetch_data_from_db($update_id){
+function fetch_db($update_id){
 
     if(!is_numeric($update_id)){
         redirect('securite/error');
@@ -197,7 +207,8 @@ function view()
 	$this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
+
 
 	$update_id = $this->uri->segment(3);
 	$this->_set_to_opened($update_id);
@@ -212,6 +223,7 @@ $this->load->module('templates');
 $this->templates->admin($data);
 
 }
+}
 //si le message est ouvert la couleur de l'icone change en changeant la valeur de "ouvert de 0 à 1"
 function _set_to_opened($update_id)
 {
@@ -224,7 +236,8 @@ function inbox()
 	    $this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
+
 	$folder_type = "inbox";
 	$data['query'] = $this->_fetch_messages($folder_type);
 	$data['folder_type'] = ucfirst($folder_type);
@@ -236,6 +249,7 @@ $this->securite->_verify_admin();
 $data['view_file']="view_messages";
 $this->load->module('templates');
 $this->templates->admin($data);
+}
 }
 
 function _fetch_messages($folder_type)

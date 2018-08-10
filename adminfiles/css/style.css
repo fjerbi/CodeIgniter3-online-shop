@@ -148,8 +148,8 @@
 .progressSlim.blue .ui-progressbar-value,
 .label-info,
 .badge-info {
-	background: #578EBE !important;
-	border-color: #578EBE !important;
+	background: #0db0dd !important;
+	border-color: #0db0dd !important;
 	color: #fff;
 }
 
@@ -461,16 +461,16 @@ a.brand span {
 
 .nav-tabs.nav-stacked  > li.active > a,
 .nav-tabs.nav-stacked  > li > ul > li.active > a {
-  	background: #578EBE;
-	border-bottom: 1px solid #578EBE;
+  	background: #0db0dd;
+	border-bottom: 1px solid #0db0dd;
 }
 
 .nav-tabs.nav-stacked  > li.active > a:hover,
 .nav-tabs.nav-stacked  > li > ul > li.active > a:hover {
-  	background: #578EBE;
+  	background: #0db0dd;
 	color: #fff;
 	border: none;
-	border-bottom: 1px solid #578EBE;
+	border-bottom: 1px solid #0db0dd;
 }
 .header-nav .nav li:hover{
 background: #3A3A3A;
@@ -587,14 +587,14 @@ border-bottom: 1px solid transparent;
 .dropdown-submenu:hover > a {
   	color: #ffffff;
   	text-decoration: none;
-  	background: #578EBE;
+  	background: #0db0dd;
 }
 
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
   	color: #ffffff;
   	text-decoration: none;
-  	background: #578EBE;
+  	background: #0db0dd;
 }
 
 .dropdown-menu .disabled > a,
@@ -824,7 +824,7 @@ ul.messages li .message {
 }
 
 .box {
-	border: 2px solid #578EBE;
+	border: 2px solid #0db0dd;
 	background: #fff !important;
 	margin-bottom: 28px;	
 }
@@ -834,7 +834,7 @@ ul.messages li .message {
 	font-size: 16px;
 	line-height: 16px;
   	padding: 10px;
-  	background: #578EBE;
+  	background: #0db0dd;
 	-webkit-box-shadow: none;
      	-moz-box-shadow: none;
           box-shadow: none;
@@ -1656,8 +1656,8 @@ fieldset[disabled] .btn:active {
 }
 
 .btn-primary {
-  background-color: #578EBE;
-  border-color: #578EBE;
+  background-color: #0db0dd;
+  border-color: #0db0dd;
 }
 
 .btn-primary:hover,
@@ -1676,8 +1676,8 @@ fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled:active,
 .btn-primary[disabled]:active,
 fieldset[disabled] .btn-primary:active {
-  background-color: #578EBE;
-  border-color: #578EBE;
+  background-color: #0db0dd;
+  border-color: #0db0dd;
 }
 
 .btn-warning {
@@ -1799,7 +1799,7 @@ fieldset[disabled] .btn-link {
 
 .btn-link {
   font-weight: normal;
-  color: #578EBE;
+  color: #0db0dd;
   cursor: pointer;
   border-radius: 0;
 }

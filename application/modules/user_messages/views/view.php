@@ -46,7 +46,7 @@ $view_url = base_url()."user_messages/view/".$row->id;
                   }else{
                     $icon = '<i class="icon-envelope-alt" style="color: orange;"></i>';
                   }
-                  $date_sent = $this->timedate->get_date($row->date_creation,'full');
+                  $date_sent = $this->timedate->get_date($row->date_creation,'datepicker');
               
 
               if($row->envoye_par ==0){

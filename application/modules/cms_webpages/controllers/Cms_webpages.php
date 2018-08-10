@@ -4,6 +4,15 @@ class Cms_webpages extends MX_Controller
 
 function __construct() {
 parent::__construct();
+ $this->load->database();
+    $this->load->library(array('ion_auth','form_validation'));
+    $this->load->helper(array('url','language'));
+    $this->load->library('email');
+$this->email->set_newline("\r\n");
+
+    $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+    $this->lang->load('auth');
 }
 
 
@@ -26,7 +35,7 @@ $this->_delete($update_id);
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 
 $submit = $this->input->post('submit',TRUE);
 if($submit=="Cancel"){
@@ -43,7 +52,7 @@ redirect('cms_webpages/manage');
     }
 
 
-
+}
 function deleteconf($update_id)
 {
 
@@ -54,19 +63,19 @@ function deleteconf($update_id)
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 $data['headline'] = "Supprimer la page";
   $data['update_id']=$update_id;
 $data['flash'] = $this->session->flashdata('item');
     $data['view_file']="deleteconf";
     $this->load->module('templates');
     $this->templates->admin($data);
-
+}
 }
  function  create(){
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
 
 
   $update_id= $this->uri->segment(3);
@@ -83,7 +92,7 @@ if($submit =="Cancel"){
          
            $this->form_validation->set_rules('contenu_page','Page content','required');
            if($this->form_validation->run($this) ==TRUE){
-            $data = $this->fetch_data_from_post();
+            $data = $this->fetch_post();
 
 $data['url_page'] = url_title($data['titre_page']);
 
@@ -116,10 +125,10 @@ redirect('cms_webpages/create/'.$update_id);
        }
 
        if((is_numeric($update_id)) && ($submit!="Submit")){
-$data =$this->fetch_data_from_db($update_id);
+$data =$this->fetch_db($update_id);
 
        }else{
-        $data =$this->fetch_data_from_post();
+        $data =$this->fetch_post();
         
        }
 
@@ -137,10 +146,11 @@ $data['flash'] = $this->session->flashdata('item');
     $this->templates->admin($data);
 
     }
+  }
 
 
 
-function fetch_data_from_post(){
+function fetch_post(){
 
 $data['titre_page'] = $this->input->post('titre_page',TRUE);
 $data['motcle_page'] = $this->input->post('motcle_page',TRUE);
@@ -150,7 +160,7 @@ $data['contenu_page'] = $this->input->post('contenu_page',TRUE);
 return $data;
 }
 
-function fetch_data_from_db($update_id){
+function fetch_db($update_id){
 
     if(!is_numeric($update_id)){
         redirect('securite/error');
@@ -178,7 +188,7 @@ function  manage(){
         $this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin()){
  $data['flash'] = $this->session->flashdata('item');
 
 $data['query'] = $this->get('url_page');
@@ -187,7 +197,7 @@ $data['query'] = $this->get('url_page');
 $data['view_file']="manage";
 $this->load->module('templates');
 $this->templates->admin($data);
-
+}
     }
 
 function get($order_by) {

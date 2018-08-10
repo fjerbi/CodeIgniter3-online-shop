@@ -1,0 +1,38 @@
+html,
+body {
+  color: #444;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: #202121 url('https://raw.githubusercontent.com/codepen24/imgStore/master/trame.png') repeat center top;
+  font: normal normal normal 14px / 100% 'Oswald', sans-serif;
+  line-height: 23px;
+}
+
+.flexBox {
+  width: 100%;
+  height: 100%;
+  box-align: center;
+  -moz-box-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
+  display: flex;
+}
+
+.marquee {
+	box-sizing: border-box;
+	color: #86a55e;
+	font: bold 28px/170% Trebuchet MS;
+	height: 200px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0 4%;
+	width: 50%;
+	text-align: center;
+	text-transform: uppercase;
+}

@@ -30,7 +30,7 @@ if (is_numeric($update_id)) {?>
 
 <a href="<?= base_url() ?>sliders/manage"><button type="button" class="btn btn-success">Retourner</button></a>
 
-<a href="<?= base_url() ?>homepage_offer/update/<?= $update_id ?>"><button type="button" class="btn btn-primary">Ajouter vos images </button></a>
+<a href="<?= base_url() ?>slides/update_group/<?= $update_id ?>"><button type="button" class="btn btn-primary">Ajouter vos images </button></a>
 <a href="<?= base_url() ?>sliders/deleteconf/<?= $update_id ?>"><button type="button" class="btn btn-danger">Supprimer l'image</button></a>
 </div>
 </div><!--/span-->
@@ -74,7 +74,7 @@ $form_location=base_url()."sliders/create/".$update_id;
 </div>
 
 <div class="control-group">
-<label class="control-label" for="typeahead">Target URL</label>
+<label class="control-label" for="typeahead">URL cible</label>
 <div class="controls">
 <input type="text" class="span6" name="target_url" value="<?= $target_url ?>">
 

@@ -39,16 +39,22 @@ $this->load->module('securite');
         <div class="container header-middle-cont">
             <div class="toplogo">
                 <a href="<?php echo base_url(); ?>">
-                    <img src="<?php echo base_url();?>technipack_pictures/technipacklogo.png" alt="Technipack - Technique de packaging">
+                    <img src="<?php echo base_url();?>technipack_pictures/technipacklogo.png" alt="Technipack - Technique de packaging" style="margin-left: 500px;">
+
+<?php
+
+
+echo Modules::run('youraccount/user_pseudo');
+?>
                 </a>
             </div>
 
             <div class="shop-menu">
                 <ul>
-
-
-              
+            <br>  <br>  <br>
                     <li class="topauth">
+
+
 
                         <a href="<?= base_url() ?>youraccount/logout">
                             <i class="fa fa-unlock"></i>
@@ -85,6 +91,7 @@ $this->load->module('securite');
                         </div>
                     </li>
 
+          
 
                      <li>
                         <div class="h-cart">
@@ -97,7 +104,17 @@ $this->load->module('securite');
                     </li>
 
 
+ <li>
+                        <div class="h-cart">
+                            <a href="<?php echo base_url()?>chatroom/chatroom.php">
+                              <i class="fa fa-comments-o"></i>
+                                <span class="shop-menu-ttl">NOTRE CHATROOM</span>
+                               
+                            </a>
+                        </div>
+                    </li>
  
+
                 </ul>
             </div>
         </div>

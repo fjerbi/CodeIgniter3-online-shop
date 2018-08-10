@@ -3,31 +3,35 @@
 
 <?php
 if(isset($flash)){
-  echo $flash;
+echo $flash;
 }
 
-  $create_item_url=base_url()."sliders/create";
-  ?><p style="margin-top:30px">
-		<a href="<?= $create_item_url ?>"><button type="submit" class="btn btn-primary">Gerer vos images</button>
+$create_item_url=base_url()."sliders/create";
+?><p style="margin-top:30px">
+<a href="<?= $create_item_url ?>"><button type="submit" class="btn btn-primary">Gerer vos images</button>
 
-    </p>
-
+</p>
+<?php
+if($num_rows<1){
+echo "<p> Vous n'avez aucun slider dans le site web.</p>";
+}else{
+  ?>
 <div class="row-fluid sortable">    
-        <div class="box span12">
-          <div class="box-header" data-original-title>
-            <h2><i class="halflings-icon white align-justify"></i><span class="break"></span>Liste des images</h2>
-            <div class="box-icon">
-              <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
-              <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-              <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-            </div>
-          </div>
-          <div class="box-content">
+<div class="box span12">
+<div class="box-header" data-original-title>
+<h2><i class="halflings-icon white align-justify"></i><span class="break"></span>Liste des images</h2>
+<div class="box-icon">
+<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+</div>
+</div>
+<div class="box-content">
 <table class="table table-striped table-bordered bootstrap-datatable datatable">
 <thead>
 <tr>
-  <th>Titre du slider</th>
-<th>Target URL</th>
+<th>Titre du slider</th>
+<th>URL cible</th>
 
 
 
@@ -39,13 +43,13 @@ if(isset($flash)){
 
 foreach ($query->result() as $row) { 
 $edit_page_url = base_url()."sliders/create/".$row->id;
-$view_page_url = base_url().$row->target_url;
+$view_page_url = base_url()."slides/view/".$row->id;
 
 
 
 ?>
 <tr>
-  <td class="center"><?= $row->titre_slider?></td>
+<td class="center"><?= $row->titre_slider?></td>
 <td><?= $view_page_url ?></td>
 
 
@@ -69,6 +73,10 @@ $view_page_url = base_url().$row->target_url;
 </tbody>
 </table>            
 
-            </div><!--/span-->
-      
-      </div><!--/row-->
+</div><!--/span-->
+
+</div><!--/row-->
+<?php
+
+} 
+?>

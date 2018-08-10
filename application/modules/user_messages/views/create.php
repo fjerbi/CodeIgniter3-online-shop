@@ -82,7 +82,7 @@ if(!isset($envoye_par)){
 							
 							<div class="form-actions">
 							  <button type="submit" class="btn btn-primary" name="submit" value="Submit">Valider</button>
-							  <button type="submit" class="btn" name="submit" value="Cancel">Cancel</button>
+							  <button type="submit" class="btn" name="submit" value="Cancel">Annuler</button>
 							</div>
 						  </fieldset>
 						  <?php

@@ -19,7 +19,7 @@ if(isset($flash)){
 					</div>
 
 <div class="box-content">
-<p>CHoisir</p>
+<p>Veuillez choisir la catégorie du produit</p>
 <?php
 $form_location = base_url()."store_cat_assign/submit/".$id_produit;
 ?>
@@ -34,10 +34,11 @@ $additional_dd_code='id="selectError"';
 
 echo form_dropdown('id_cat', $options,$id_cat,$additional_dd_code);
 ?>	
+<br><br><br>
 							</div>
 						</div>
 						<div class="form-actions">
-							 <button type="submit" class="btn btn-primary" name="submit" value="Submit">Valider</button>
+							 <button type="submit" class="btn btn-primary" name="submit" value="Submit">OK</button>
 							  <button type="submit" class="btn" name="submit" value="Finished">Annuler</button>
 							</div>
 						  </fieldset>

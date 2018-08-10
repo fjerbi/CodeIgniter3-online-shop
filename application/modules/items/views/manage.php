@@ -7,7 +7,7 @@ if(isset($flash)){
 
   $create_item_url=base_url()."items/create";
   ?><p style="margin-top:30px">
-		<a href="<?= $create_item_url ?>"><button type="submit" class="btn btn-primary">Gerer vos Produits</button>
+		<a href="<?= $create_item_url ?>"><button type="submit" class="btn btn-primary">AJOUTER UN PRODUIT</button>
 
     </p>
 
@@ -49,14 +49,14 @@ if(isset($flash)){
                   $status_label = "success";
                   $status_desc = "Actif";
                 }else{
-                  $status_label ="danger";
+                  $status_label ="warning";
                   $status_desc ="Inactif";
                 }
                 ?>
               <tr>
                 <td><?= $row->id?></td>
                 <td><?= $row->nom_produit?></td>
-                <td class="center"><img src="<?php echo base_url('hd_pics/'.$row->image_produit)?>"></td>
+                <td class="center"><img src="<?php echo base_url('hd_pics/'.$row->image_produit)?>" style="width: 50px; height: 50px;"></td>
                 <td class="center"><?= $row->prix_produit?></td>
                 <td class="center"><?= $row->ancien_prix?></td>
                 <td class="center"><?= $row->quantite_produit?></td>

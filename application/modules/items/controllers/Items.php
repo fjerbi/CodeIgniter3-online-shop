@@ -5,6 +5,15 @@ class Items extends MX_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->database();
+    $this->load->library(array('ion_auth','form_validation'));
+    $this->load->helper(array('url','language'));
+    $this->load->library('email');
+$this->email->set_newline("\r\n");
+
+    $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+    $this->lang->load('auth');
     }
 function num_items()
 {
@@ -15,7 +24,7 @@ echo $num->num_rows();
 function testjson()
 {
  
-   $connect = mysqli_connect("localhost", "root", "", "djerbashop");  
+   $connect = mysqli_connect("localhost", "root", "", "technipackpfe");  
            $sql = "SELECT * FROM utilisateurs";  
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
@@ -49,7 +58,7 @@ function view($id_produit)
 }
 //fetch les details des produits
 
-$data = $this->fetch_data_from_db($id_produit);
+$data = $this->fetch_db($id_produit);
   $data['id_produit']=$id_produit;
 
 
@@ -174,7 +183,7 @@ return $key_with_heighest_value;
 function _process_delete($id_produit)
 {
 //suppression des images depuis hd_pics et nohd_pics
-$data = $this->fetch_data_from_db($id_produit);
+$data = $this->fetch_db($id_produit);
 $image_produit = $data['image_produit'];
 $image_mini = $data['image_mini'];
 $product_image_path == './hd_pics/'.$image_produit;
@@ -200,7 +209,7 @@ $this->_delete($id_produit);
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 $submit = $this->input->post('submit',TRUE);
 if($submit=="Cancel"){
@@ -215,7 +224,7 @@ redirect('items/manage');
 
 
     }
-
+}
 //confirmation de la suppression d'une entité
 function deleteconf($id_produit)
 {
@@ -225,7 +234,7 @@ function deleteconf($id_produit)
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 $data['headline'] = "Supprimer le produit";
   $data['id_produit']=$id_produit;
 $data['flash'] = $this->session->flashdata('item');
@@ -234,7 +243,7 @@ $data['flash'] = $this->session->flashdata('item');
     $this->templates->admin($data);
 
 }
-
+}
    function delete_image($id_produit)
         {
 
@@ -243,9 +252,9 @@ $data['flash'] = $this->session->flashdata('item');
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
 
-$data = $this->fetch_data_from_db($id_produit);
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
+$data = $this->fetch_db($id_produit);
 $image_produit = $data['image_produit'];
 $image_mini = $data['image_mini'];
 
@@ -269,7 +278,7 @@ $flash_msg="L image du produit est supprime avec succes.";
                 $value='<div class="alert alert-success" role="alert">'.$flash_msg.'</div>';
            $this->session->set_flashdata('item', $value);
 redirect('items/create/'.$id_produit);
-}
+}}
 
 
 function _generate_thumbnail($file_name)
@@ -296,7 +305,7 @@ $this->image_lib->resize();
 }
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 $submit = $this->input->post('submit', TRUE);
 if($submit == "Cancel"){
@@ -353,7 +362,7 @@ $this->_update($id_produit, $update_data);
                 }
         }
 
-
+}
     function  upload_image($id_produit){
 //si l'id est un numéro:astuce sécurité
 if(!is_numeric($id_produit)) {
@@ -362,7 +371,7 @@ if(!is_numeric($id_produit)) {
 
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 
 
@@ -376,11 +385,12 @@ $data['flash'] = $this->session->flashdata('item');
 
      
     }
+  }
 
     function  create(){
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 
   $id_produit= $this->uri->segment(3);
@@ -392,14 +402,15 @@ if($submit =="Cancel"){
 
        if($submit=="Submit"){
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nom_produit','Item Title','required|max_length[240]|callback_item_check');
-         $this->form_validation->set_rules('prix_produit','Item Price','required|numeric');
-         $this->form_validation->set_rules('quantite_produit','quantity','required|numeric');
-          $this->form_validation->set_rules('ancien_prix','Old Price','numeric');
-          $this->form_validation->set_rules('status','Status','required|numeric');
-           $this->form_validation->set_rules('description_produit','Item Description','required');
+        $this->form_validation->set_rules('nom_produit','Nom produit','required|max_length[240]|callback_item_check');
+         $this->form_validation->set_rules('prix_produit','Prix produit','required|numeric');
+         $this->form_validation->set_rules('quantite_produit','Quantite','required|numeric');
+          $this->form_validation->set_rules('ancien_prix','Acien prix','numeric');
+          $this->form_validation->set_rules('status','Statut','required|numeric');
+           $this->form_validation->set_rules('shipping','Frais livraison','required|numeric');
+           $this->form_validation->set_rules('description_produit',' Description','required');
            if($this->form_validation->run($this) ==TRUE){
-            $data = $this->fetch_data_from_post();
+            $data = $this->fetch_post();
 
 $data['url_produit'] = url_title($data['nom_produit']);
 
@@ -429,10 +440,10 @@ redirect('items/create/'.$id_produit);//remember the flash data
        }
 
        if((is_numeric($id_produit)) && ($submit!="Submit")){
-$data =$this->fetch_data_from_db($id_produit);
+$data =$this->fetch_db($id_produit);
 
        }else{
-        $data =$this->fetch_data_from_post();
+        $data =$this->fetch_post();
         $data['image_produit'] = "";
        }
 
@@ -450,6 +461,7 @@ $data['flash'] = $this->session->flashdata('item');
     $this->templates->admin($data);
 
     }
+}
 
 
 //gérer les produits
@@ -458,7 +470,7 @@ $data['flash'] = $this->session->flashdata('item');
         $this->load->library('session');
         $this->load->module('securite');
 
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
  $data['flash'] = $this->session->flashdata('item');
 
 $data['query'] = $this->get('nom_produit');
@@ -469,7 +481,8 @@ $this->load->module('templates');
 $this->templates->admin($data);
 
     }
-function fetch_data_from_post(){
+  }
+function fetch_post(){
 
 $data['nom_produit'] = $this->input->post('nom_produit',TRUE);
 $data['prix_produit'] = $this->input->post('prix_produit',TRUE);
@@ -477,10 +490,11 @@ $data['quantite_produit'] = $this->input->post('quantite_produit',TRUE);
 $data['ancien_prix'] = $this->input->post('ancien_prix',TRUE);
 $data['description_produit'] = $this->input->post('description_produit',TRUE);
 $data['status'] = $this->input->post('status',TRUE);
+$data['shipping'] = $this->input->post('shipping',TRUE);
 return $data;
 }
 
-function fetch_data_from_db($id_produit){
+function fetch_db($id_produit){
 
     if(!is_numeric($id_produit)){
         redirect('securite/error');
@@ -497,6 +511,7 @@ foreach ($query->result() as $row) {
     $data['image_mini'] = $row->image_mini;
     $data['ancien_prix'] = $row->ancien_prix;
     $data['status'] = $row->status;
+    $data['shipping'] = $row->shipping;
     
 }
 if (!isset($data)){

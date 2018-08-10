@@ -4,6 +4,15 @@ class Homepage_offer extends MX_Controller
 
 function __construct() {
 parent::__construct();
+  $this->load->database();
+    $this->load->library(array('ion_auth','form_validation'));
+    $this->load->helper(array('url','language'));
+    $this->load->library('email');
+$this->email->set_newline("\r\n");
+
+    $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+    $this->lang->load('auth');
 }
 
 
@@ -49,7 +58,7 @@ function delete($update_id){
 
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 $query = $this->get_where($update_id);
 foreach ($query->result() as $row) {
@@ -64,7 +73,7 @@ $this->session->set_flashdata('item', $value);
 
 redirect('homepage_offer/update/'.$block_id);
 }
-
+}
 function is_available_item($id_produit)
 {
 if(!is_numeric($id_produit)){
@@ -90,7 +99,7 @@ function submit($update_id)
 
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 
 $submit = $this->input->post('submit', TRUE);
 $id_produit = trim($this->input->post('id_produit', TRUE));
@@ -121,6 +130,7 @@ $this->session->set_flashdata('item', $value);
 }
 redirect('homepage_offer/update/'.$update_id);
 }
+}
     function  update($update_id){
 //si l'id est un numéro:astuce sécurité
 if(!is_numeric($update_id)) {
@@ -129,8 +139,7 @@ if(!is_numeric($update_id)) {
 
 $this->load->library('session');
 $this->load->module('securite');
-$this->securite->_verify_admin();
-
+if($this->ion_auth->logged_in() && $this->ion_auth->is_admin() || $this->ion_auth->in_group('commercial')){
 $data['query'] = $this->get_where_custom('block_id',$update_id);
 $data['num_rows'] = $data['query']->num_rows();
 
@@ -146,7 +155,7 @@ $data['flash'] = $this->session->flashdata('item');
 
      
     }
-
+}
 
 function get($order_by) {
 $this->load->model('mdl_homepage_offer');

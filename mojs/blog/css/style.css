@@ -1,0 +1,953 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700);
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  font-family: Helvetica, 'Raleway', sans-serif;
+  background-image: url("http://www.getmendoza.com/images/icons/rss.png");
+  background-size: 25%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding-left:10vmin;
+  padding-right: 10vmin;
+  /* padding-top: 3vmin; */
+  /* padding-bottom: 3vmin; */
+  margin: 0px 0px 0px 0px;
+  background-color: #F5F5F5;
+  overflow: hidden;
+}
+
+.header {
+  right: 0;
+  left: 0;
+  top: 0;
+  background-color: #EE7600;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3vmin;
+  color: #FFFFFF;
+  width: auto;
+  margin: 0;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  position: fixed;
+  z-index: 9999;
+}
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #EE7600;
+  text-align: center;
+  z-index: 9999;
+  text-align: right;
+  font-size: 2vmin;
+  color: #FFFFFF;
+}
+
+.feedEkList {
+  /*   width: 90%; */
+  list-style: none outside none;
+  background-color: #FFFFFF;
+  border: 4px solid #919191;
+  padding: 42px 6px;
+  color: #3E3E3E;
+  position: relative;
+  z-index: 500;
+}
+
+.feedEkList li {
+  border-bottom: 2px solid #919191;
+  font-size: 3vmin;
+  padding: 17px;
+  color: #000000;
+}
+
+.feedEkList a {
+  color:#000000;
+  text-decoration: none;
+}
+
+.feedEkList li:last-child {
+  border-bottom: none;
+}
+
+.itemTitle a {
+  font-weight: bold;
+  font-size: 3vmin;
+  color: #a12712;
+  text-decoration: none
+}
+
+
+/* .itemTitle a:hover {
+  text-decoration: underline
+} */
+
+.itemDate {
+  font-size: 2vmin;
+  color: #AAAAAA;
+  padding-top: 1px;
+  padding-bottom: 7px;
+}
+
+img {
+  display: none;
+}
+
+br {
+  display: none;
+}
+
+
+.treadmill {
+    overflow: hidden;
+    /*optional stylings*/
+    /*border: 1px solid black;*/
+    /*height: 332px;*/
+}
+
+.treadmill-unit {
+    overflow: hidden;
+    position: relative;
+}
+
+
+/*Media Queries Below*/
+
+/* MAX WIDTH 700 */
+
+@media (max-width: 700px){
+  @import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700);
+  * {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  body {
+    font-family: Helvetica, 'Raleway', sans-serif;
+    background-image: url("http://www.getmendoza.com/images/icons/rss.png");
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-left:10vmin;
+    padding-right: 10vmin;
+    /* padding-top: 3vmin; */
+    /* padding-bottom: 3vmin; */
+    margin: 0px 0px 0px 0px;
+    background-color: #F5F5F5;
+    overflow: hidden;
+  }
+
+  .header {
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: #EE7600;
+    text-align: center;
+    font-weight: bold;
+    font-size: 5vmin;
+    color: #FFFFFF;
+    width: auto;
+    margin: 0;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    position: fixed;
+    z-index: 9999;
+  }
+
+  .footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #EE7600;
+    text-align: center;
+    z-index: 9999;
+    text-align: right;
+    font-size: 3vmin;
+    color: #FFFFFF;
+  }
+
+  .feedEkList {
+    /*   width: 90%; */
+    list-style: none outside none;
+    background-color: #FFFFFF;
+    border: 4px solid #919191;
+    padding: 34px 6px;
+    color: #3E3E3E;
+    position: relative;
+    z-index: 500;
+  }
+
+  .feedEkList a {
+    color:#000000;
+    text-decoration: none;
+  }
+
+  .feedEkList li {
+    border-bottom: 2px solid #919191;
+    font-size: 4vmin;
+    padding: 13px;
+    color: #000000;
+  }
+
+  .feedEkList li:last-child {
+    border-bottom: none;
+  }
+
+  .itemTitle a {
+    font-weight: bold;
+    font-size: 5vmin;
+    color: #a12712;
+    text-decoration: none
+  }
+
+
+  /* .itemTitle a:hover {
+    text-decoration: underline
+  } */
+
+  .itemDate {
+    font-size: 4vmin;
+    color: #AAAAAA;
+    padding-top: 1px;
+    padding-bottom: 7px;
+  }
+
+  img {
+    display: none;
+  }
+
+  br {
+    display: none;
+  }
+
+
+  .treadmill {
+      overflow: hidden;
+      /*optional stylings*/
+      /*border: 1px solid black;*/
+      /*height: 332px;*/
+  }
+
+  .treadmill-unit {
+      overflow: hidden;
+      position: relative;
+  }
+
+}
+
+
+/* MAX WIDTH 600 */
+
+@media (max-width: 600px){
+  @import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700);
+  * {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  body {
+    font-family: Helvetica, 'Raleway', sans-serif;
+    background-image: url("http://www.getmendoza.com/images/icons/rss.png");
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-left:10vmin;
+    padding-right: 10vmin;
+    /* padding-top: 3vmin; */
+    /* padding-bottom: 3vmin; */
+    margin: 0px 0px 0px 0px;
+    background-color: #F5F5F5;
+    overflow: hidden;
+  }
+
+  .header {
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: #EE7600;
+    text-align: center;
+    font-weight: bold;
+    font-size: 4vmin;
+    color: #FFFFFF;
+    width: auto;
+    margin: 0;
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    position: fixed;
+    z-index: 9999;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .feedEkList {
+    /*   width: 90%; */
+    list-style: none outside none;
+    background-color: #FFFFFF;
+    border: 4px solid #919191;
+    padding: 28px 6px;
+    color: #3E3E3E;
+    position: relative;
+    z-index: 500;
+  }
+
+  .feedEkList li {
+    border-bottom: 2px solid #919191;
+    font-size: 4vmin;
+    padding: 10px;
+    color: #000000;
+  }
+
+  .feedEkList a {
+    color:#000000;
+    text-decoration: none;
+  }
+
+  .feedEkList li:last-child {
+    border-bottom: none;
+  }
+
+  .itemTitle a {
+    font-weight: bold;
+    font-size: 5vmin;
+    color: #a12712;
+    text-decoration: none
+  }
+
+
+  /* .itemTitle a:hover {
+    text-decoration: underline
+  } */
+
+  .itemDate {
+    font-size: 4vmin;
+    color: #AAAAAA;
+    padding-top: 1px;
+    padding-bottom: 7px;
+  }
+
+  img {
+    display: none;
+  }
+
+  br {
+    display: none;
+  }
+
+
+  .treadmill {
+      overflow: hidden;
+      /*optional stylings*/
+      /*border: 1px solid black;*/
+      /*height: 332px;*/
+  }
+
+  .treadmill-unit {
+      overflow: hidden;
+      position: relative;
+  }
+
+}
+
+
+/* MAX WIDTH 500 */
+
+
+@media (max-width: 500px){
+  @import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700);
+  * {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  body {
+    font-family: Helvetica, 'Raleway', sans-serif;
+    background-image: url("http://www.getmendoza.com/images/icons/rss.png");
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-left:10vmin;
+    padding-right: 10vmin;
+    /* padding-top: 3vmin; */
+    /* padding-bottom: 3vmin; */
+    margin: 0px 0px 0px 0px;
+    background-color: #F5F5F5;
+    overflow: hidden;
+  }
+
+  .header {
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: #EE7600;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3vmin;
+    color: #FFFFFF;
+    width: auto;
+    margin: 0;
+    padding-top: 7px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 7px;
+    position: fixed;
+    z-index: 9999;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .feedEkList {
+    /*   width: 90%; */
+    list-style: none outside none;
+    background-color: #FFFFFF;
+    border: 4px solid #919191;
+    padding: 10px 6px;
+    color: #3E3E3E;
+    position: relative;
+    z-index: 500;
+  }
+
+  .feedEkList li {
+    border-bottom: 2px solid #919191;
+    font-size: 5vmin;
+    padding: 8px;
+    color: #000000;
+  }
+
+  .feedEkList a {
+    color:#000000;
+    text-decoration: none;
+  }
+
+  .feedEkList li:last-child {
+    border-bottom: none;
+  }
+
+  .itemTitle a {
+    font-weight: bold;
+    font-size: 6vmin;
+    color: #a12712;
+    text-decoration: none
+  }
+
+
+  /* .itemTitle a:hover {
+    text-decoration: underline
+  } */
+
+  .itemDate {
+    font-size: 4vmin;
+    color: #AAAAAA;
+    padding-top: 1px;
+    padding-bottom: 7px;
+  }
+
+  img {
+    display: none;
+  }
+
+  br {
+    display: none;
+  }
+
+
+  .treadmill {
+      overflow: hidden;
+      /*optional stylings*/
+      /*border: 1px solid black;*/
+      /*height: 332px;*/
+  }
+
+  .treadmill-unit {
+      overflow: hidden;
+      position: relative;
+  }
+
+}
+
+/* MAX WIDTH 400 */
+
+
+@media (max-width: 400px){
+  @import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700);
+  * {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  body {
+    font-family: Helvetica, 'Raleway', sans-serif;
+    background-image: url("http://www.getmendoza.com/images/icons/rss.png");
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-left: 8vmin;
+    padding-right: 8vmin;
+    /* padding-top: 3vmin; */
+    /* padding-bottom: 3vmin; */
+    margin: 0px 0px 0px 0px;
+    background-color: #F5F5F5;
+    overflow: hidden;
+  }
+
+  .header {
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: #EE7600;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2vmin;
+    color: #FFFFFF;
+    width: auto;
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    position: fixed;
+    z-index: 9999;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .feedEkList {
+    /*   width: 90%; */
+    list-style: none outside none;
+    background-color: #FFFFFF;
+    border: 4px solid #919191;
+    padding: 8px 6px;
+    color: #3E3E3E;
+    position: relative;
+    z-index: 500;
+  }
+
+  .feedEkList li {
+    border-bottom: 2px solid #919191;
+    font-size: 6vmin;
+    padding: 8px;
+    color: #000000;
+  }
+
+  .feedEkList a {
+    color:#000000;
+    text-decoration: none;
+  }
+
+  .feedEkList li:last-child {
+    border-bottom: none;
+  }
+
+  .itemTitle a {
+    font-weight: bold;
+    font-size: 7vmin;
+    color: #a12712;
+    text-decoration: none
+  }
+
+
+  /* .itemTitle a:hover {
+    text-decoration: underline
+  } */
+
+  .itemDate {
+    font-size: 5vmin;
+    color: #AAAAAA;
+    padding-top: 1px;
+    padding-bottom: 7px;
+  }
+
+  img {
+    display: none;
+  }
+
+  br {
+    display: none;
+  }
+
+
+  .treadmill {
+      overflow: hidden;
+      /*optional stylings*/
+      /*border: 1px solid black;*/
+      /*height: 332px;*/
+  }
+
+  .treadmill-unit {
+      overflow: hidden;
+      position: relative;
+  }
+
+}
+
+
+/* MAX WIDTH 300 */
+
+
+@media (max-width: 300px){
+  @import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700);
+  * {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  body {
+    font-family: Helvetica, 'Raleway', sans-serif;
+    background-image: url("http://www.getmendoza.com/images/icons/rss.png");
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-left: 6vmin;
+    padding-right: 6vmin;
+    /* padding-top: 3vmin; */
+    /* padding-bottom: 3vmin; */
+    margin: 0px 0px 0px 0px;
+    background-color: #F5F5F5;
+    overflow: hidden;
+  }
+
+  .header {
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: #EE7600;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2vmin;
+    color: #FFFFFF;
+    width: auto;
+    margin: 0;
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    position: fixed;
+    z-index: 9999;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .feedEkList {
+    /*   width: 90%; */
+    list-style: none outside none;
+    background-color: #FFFFFF;
+    border: 4px solid #919191;
+    padding: 6px 6px;
+    color: #3E3E3E;
+    position: relative;
+    z-index: 500;
+  }
+
+  .feedEkList a {
+    color:#000000;
+    text-decoration: none;
+  }
+
+  .feedEkList li {
+    border-bottom: 2px solid #919191;
+    font-size: 8vmin;
+    padding: 6px;
+    color: #000000;
+  }
+
+  .feedEkList li:last-child {
+    border-bottom: none;
+  }
+
+  .itemTitle a {
+    font-weight: bold;
+    font-size: 9vmin;
+    color: #a12712;
+    text-decoration: none
+  }
+
+
+  /* .itemTitle a:hover {
+    text-decoration: underline
+  } */
+
+  .itemDate {
+    font-size: 6vmin;
+    color: #AAAAAA;
+    padding-top: 1px;
+    padding-bottom: 7px;
+  }
+
+  img {
+    display: none;
+  }
+
+  br {
+    display: none;
+  }
+
+
+  .treadmill {
+      overflow: hidden;
+      /*optional stylings*/
+      /*border: 1px solid black;*/
+      /*height: 332px;*/
+  }
+
+  .treadmill-unit {
+      overflow: hidden;
+      position: relative;
+  }
+
+}
+
+/* MAX WIDTH 200 */
+
+
+@media (max-width: 200px){
+  @import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700);
+  * {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  body {
+    font-family: Helvetica, 'Raleway', sans-serif;
+    background-image: url("http://www.getmendoza.com/images/icons/rss.png");
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-left: 4vmin;
+    padding-right: 4vmin;
+    /* padding-top: 3vmin; */
+    /* padding-bottom: 3vmin; */
+    margin: 0px 0px 0px 0px;
+    background-color: #F5F5F5;
+    overflow: hidden;
+  }
+
+  .header {
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: #EE7600;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2vmin;
+    color: #FFFFFF;
+    width: auto;
+    margin: 0;
+    padding-top: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    position: fixed;
+    z-index: 9999;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .feedEkList {
+    /*   width: 90%; */
+    list-style: none outside none;
+    background-color: #FFFFFF;
+    border: 4px solid #919191;
+    padding: 5px 6px;
+    color: #3E3E3E;
+    position: relative;
+    z-index: 500;
+  }
+
+  .feedEkList li {
+    border-bottom: 2px solid #919191;
+    font-size: 9vmin;
+    padding: 5px;
+    color: #000000;
+  }
+
+  .feedEkList a {
+    color:#000000;
+    text-decoration: none;
+  }
+
+  .feedEkList li:last-child {
+    border-bottom: none;
+  }
+
+  .itemTitle a {
+    font-weight: bold;
+    font-size: 10vmin;
+    color: #a12712;
+    text-decoration: none
+  }
+
+
+  /* .itemTitle a:hover {
+    text-decoration: underline
+  } */
+
+  .itemDate {
+    font-size: 7vmin;
+    color: #AAAAAA;
+    padding-top: 1px;
+    padding-bottom: 7px;
+  }
+
+  img {
+    display: none;
+  }
+
+  br {
+    display: none;
+  }
+
+
+  .treadmill {
+      overflow: hidden;
+      /*optional stylings*/
+      /*border: 1px solid black;*/
+      /*height: 332px;*/
+  }
+
+  .treadmill-unit {
+      overflow: hidden;
+      position: relative;
+  }
+
+}
+
+/* MAX HEIGHT 250 */
+
+
+@media (max-height: 250px){
+  @import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700);
+  * {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  body {
+    font-family: Helvetica, 'Raleway', sans-serif;
+    background-image: url("http://www.getmendoza.com/images/icons/rss.png");
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-left: 15vmin;
+    padding-right: 15vmin;
+    /* padding-top: 3vmin; */
+    /* padding-bottom: 3vmin; */
+    margin: 0px 0px 0px 0px;
+    background-color: #F5F5F5;
+    overflow: hidden;
+  }
+
+  .header {
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: #EE7600;
+    text-align: center;
+    font-weight: bold;
+    font-size: 7vmin;
+    color: #FFFFFF;
+    width: auto;
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    position: fixed;
+    z-index: 9999;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .feedEkList {
+    /*   width: 90%; */
+    list-style: none outside none;
+    background-color: #FFFFFF;
+    border: 3px solid #919191;
+    padding: 10px 6px;
+    color: #3E3E3E;
+    position: relative;
+    z-index: 500;
+  }
+
+  .feedEkList li {
+    border-bottom: 2px solid #919191;
+    font-size: 9vmin;
+    padding: 5px;
+    color: #000000;
+  }
+
+  .feedEkList a {
+    color:#000000;
+    text-decoration: none;
+  }
+
+  .feedEkList li:last-child {
+    border-bottom: none;
+  }
+
+  .itemTitle a {
+    font-weight: bold;
+    font-size: 10vmin;
+    color: #a12712;
+    text-decoration: none
+  }
+
+
+  /* .itemTitle a:hover {
+    text-decoration: underline
+  } */
+
+  .itemDate {
+    font-size: 7vmin;
+    color: #AAAAAA;
+    padding-top: 1px;
+    padding-bottom: 7px;
+  }
+
+  img {
+    display: none;
+  }
+
+  br {
+    display: none;
+  }
+
+
+  .treadmill {
+      overflow: hidden;
+      /*optional stylings*/
+      /*border: 1px solid black;*/
+      /*height: 332px;*/
+  }
+
+  .treadmill-unit {
+      overflow: hidden;
+      position: relative;
+  }
+
+}

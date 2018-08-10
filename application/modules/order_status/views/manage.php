@@ -1,4 +1,4 @@
-<h1>Gérer les commandes</h1>
+<h1>Gérer les états des commandes</h1>
 
 <?php
 if(isset($flash)){
@@ -7,7 +7,7 @@ if(isset($flash)){
 
   $create_account_url=base_url()."order_status/create";
   ?><p style="margin-top:30px">
-		<a href="<?= $create_account_url ?>"><button type="submit" class="btn btn-primary">Gerer vos commandes</button>
+		<a href="<?= $create_account_url ?>"><button type="submit" class="btn btn-primary">Gerer les états des commandes</button>
 
     </p>
 
