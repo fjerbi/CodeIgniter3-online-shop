@@ -17,5 +17,6 @@
 ## Configuration
 Email configuration : 
 -Configure the email configuration file(application/config/email.php) for the forgotten password and validating register with the email
-
+-PayPal configuration : 
+Configure your sandbox.paypal account or your paypal account (application/modules/parametres_web/controllers/Parametre_web.php)
 
