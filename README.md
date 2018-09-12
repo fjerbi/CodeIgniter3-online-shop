@@ -24,6 +24,6 @@ Email configuration :
 ## Admin Dashboard
 To access the admin dashboard (yourprojecturl/auth/login)
 
-Username :admin@gmail.com
+Username :admin@admin.com
 
-Password:123456123456
+Password:password
