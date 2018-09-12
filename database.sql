@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2018 at 03:53 PM
+-- Generation Time: Sep 12, 2018 at 03:55 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -245,24 +245,6 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(2, '::1', 'admin@gmail.com', 1536698670),
-(3, '::1', 'admin@gmail.com', 1536698710),
-(4, '::1', 'admin@gmail.com', 1536698726),
-(5, '::1', 'demoadmin@gmail.com', 1536698907),
-(6, '::1', 'demoadmin@gmail.com', 1536698927),
-(7, '127.0.0.1', 'demoadmin@gmail.com', 1536698941),
-(8, '::1', 'demoadmin@gmail.com', 1536698949),
-(10, '::1', 'administrator', 1536699429),
-(11, '127.0.0.1', 'administrator', 1536699442),
-(12, '::1', 'firasjerbiv2@gmail.com', 1536699476),
-(13, '::1', 'firasjerbiv2@gmail.com', 1536699486),
-(14, '::1', 'firasjerbiv2@gmail.com', 1536699641);
 
 -- --------------------------------------------------------
 
