@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  ven. 10 août 2018 à 14:30
--- Version du serveur :  10.1.30-MariaDB
--- Version de PHP :  7.1.13
+-- Host: 127.0.0.1
+-- Generation Time: Sep 12, 2018 at 03:53 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `technipackpfe`
+-- Database: `codeignitershop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `blog`
+-- Table structure for table `blog`
 --
 
 CREATE TABLE `blog` (
@@ -41,7 +41,7 @@ CREATE TABLE `blog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `blog`
+-- Dumping data for table `blog`
 --
 
 INSERT INTO `blog` (`id`, `url_page`, `titre_page`, `motcle_page`, `description_page`, `contenu_page`, `date_publication`, `auteur`, `image`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `blog` (`id`, `url_page`, `titre_page`, `motcle_page`, `description_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -62,7 +62,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `nom_categorie`, `url_categorie`, `id_categorie_parent`, `priorite`) VALUES
@@ -79,7 +79,7 @@ INSERT INTO `categories` (`id`, `nom_categorie`, `url_categorie`, `id_categorie_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categorie_produit`
+-- Table structure for table `categorie_produit`
 --
 
 CREATE TABLE `categorie_produit` (
@@ -89,7 +89,7 @@ CREATE TABLE `categorie_produit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `categorie_produit`
+-- Dumping data for table `categorie_produit`
 --
 
 INSERT INTO `categorie_produit` (`id`, `id_cat`, `id_produit`) VALUES
@@ -109,7 +109,7 @@ INSERT INTO `categorie_produit` (`id`, `id_cat`, `id_produit`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `chatroom`
+-- Table structure for table `chatroom`
 --
 
 CREATE TABLE `chatroom` (
@@ -120,10 +120,20 @@ CREATE TABLE `chatroom` (
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `chatroom`
+--
+
+INSERT INTO `chatroom` (`id`, `username`, `message`, `ip`, `date`) VALUES
+(1, 'demo123', 'hello', '::1', '2018-09-11 22:42:24'),
+(2, 'demo12345', 'testing the chatroom', '::1', '2018-09-11 22:42:35'),
+(3, 'demo999', 'hello', '::1', '2018-09-11 22:43:13'),
+(4, 'testingdemo', 'Yo', '::1', '2018-09-12 15:47:44');
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ci_sessions`
+-- Table structure for table `ci_sessions`
 --
 
 CREATE TABLE `ci_sessions` (
@@ -134,37 +144,16 @@ CREATE TABLE `ci_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `ci_sessions`
+-- Dumping data for table `ci_sessions`
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('iptiseet7jc9utbdk5c2o9vehifbrh40', '::1', 1530952687, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303935323638373b),
-('brf0t621veg6td8hokqq9jl6mvsda82t', '::1', 1530955026, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303935353032363b6964656e746974797c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b656d61696c7c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b757365725f69647c733a313a2233223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373430363637223b6c6173745f636865636b7c693a313533303935323639363b),
-('1b1u27duvaf7mgq51ec5be8lfbafaq1j', '::1', 1530955838, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303935353833383b6964656e746974797c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b656d61696c7c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b757365725f69647c733a313a2233223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353239373430363637223b6c6173745f636865636b7c693a313533303935323639363b),
-('du5sonethvcja23kgltl0p7ma5vb7m96', '::1', 1530957168, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303935373136383b),
-('8sdjku8g1o8pd41jamk41o91ml8r18mu', '::1', 1530958515, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303935383531353b),
-('9ies4tho58596s082h7u1nsfsudujl83', '::1', 1530958526, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533303935383531353b),
-('ksbslgrqajp2nsfqoc00j4m6rihm8040', '127.0.0.1', 1531259004, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533313235393030303b),
-('v4polaucv3cuit3kgm96s39jmncusn1l', '::1', 1531259019, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533313235393030353b6964656e746974797c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b656d61696c7c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b757365725f69647c733a313a2233223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353330393535383735223b6c6173745f636865636b7c693a313533313235393031363b),
-('e57ackesj8d4t9qbmpjtv7vhd38p5uka', '::1', 1531346852, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533313334363834353b),
-('hd2o3chjr92uvqbsh2hb4f19edm7p2tc', '127.0.0.1', 1532431575, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533323433313536343b),
-('cds2g9r0c91eunnsitt277uhrdrnir65', '127.0.0.1', 1532734544, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533323733343533393b),
-('7148qi7g9tbh601mh1mog3rjhdt69pjn', '::1', 1532734690, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533323733343639303b),
-('1rauebl8t2jdf0tori6evjoc65f7rrk3', '127.0.0.1', 1532777208, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533323737373230353b),
-('p8ckbc8go3f51c2dgq50jni28pnhpb5j', '::1', 1532777498, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533323737373230383b757365725f69647c733a323a223233223b70736575646f7c733a31303a22666a6572626931393935223b6e6f6d7c733a353a224a65726269223b6c6f676765645f696e7c623a313b6163746976657c623a313b),
-('fnmhsmgrk946es403tssc6v9jh2096os', '127.0.0.1', 1533076254, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533333037363036323b),
-('eibijmeklj50ngsf0a8ccmjvpmtrhm1k', '::1', 1533076322, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533333037363036383b6964656e746974797c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b656d61696c7c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b757365725f69647c733a313a2233223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353332373334363437223b6c6173745f636865636b7c693a313533333037363136343b),
-('n13005rf08tc4pppfpqbi56m84384m1u', '127.0.0.1', 1533732692, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533333733323635393b),
-('o3reen5kmus26ak2kkghf85mf59cdq42', '::1', 1533732803, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533333733323830303b),
-('tf5chpak3operoqqp4g40gshjtnd65d7', '127.0.0.1', 1533903846, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533333930333834363b),
-('5b3fn9c50hl48q71o055uagihos5behg', '::1', 1533903858, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533333930333835383b),
-('rfdnq4hfqbvp4di40p8sddn20c22lq8t', '127.0.0.1', 1533904042, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533333930333834363b6964656e746974797c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b656d61696c7c733a32323a2266697261736a65726269763240676d61696c2e636f6d223b757365725f69647c733a313a2233223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353333393033393230223b6c6173745f636865636b7c693a313533333930333937323b),
-('orrbd80ma2uc1op7tqv2u43nlhd7fogj', '::1', 1533904195, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533333930343137363b6964656e746974797c733a31353a2261646d696e40676d61696c2e636f6d223b656d61696c7c733a31353a2261646d696e40676d61696c2e636f6d223b757365725f69647c733a313a2233223b6f6c645f6c6173745f6c6f67696e7c733a31303a2231353333393034313132223b6c6173745f636865636b7c693a313533333930343138343b);
+('d692iruept98f2k0lb0o9t8meqvnsm81', '::1', 1536760185, 0x5f5f63695f6c6173745f726567656e65726174657c693a313533363736303138343b);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commandes`
+-- Table structure for table `commandes`
 --
 
 CREATE TABLE `commandes` (
@@ -180,7 +169,7 @@ CREATE TABLE `commandes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `commandes`
+-- Dumping data for table `commandes`
 --
 
 INSERT INTO `commandes` (`id`, `libelle_commande`, `date_creation`, `id_paypal`, `session_id`, `ouvert`, `statut_commande`, `id_acheteur`, `mc_gross`) VALUES
@@ -190,7 +179,7 @@ INSERT INTO `commandes` (`id`, `libelle_commande`, `date_creation`, `id_paypal`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commentaires`
+-- Table structure for table `commentaires`
 --
 
 CREATE TABLE `commentaires` (
@@ -201,7 +190,7 @@ CREATE TABLE `commentaires` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `commentaires`
+-- Dumping data for table `commentaires`
 --
 
 INSERT INTO `commentaires` (`id`, `id_produit`, `date_creation`, `commentaire`) VALUES
@@ -226,7 +215,7 @@ INSERT INTO `commentaires` (`id`, `id_produit`, `date_creation`, `commentaire`) 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `groups`
+-- Table structure for table `groups`
 --
 
 CREATE TABLE `groups` (
@@ -236,7 +225,7 @@ CREATE TABLE `groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `groups`
+-- Dumping data for table `groups`
 --
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
@@ -247,7 +236,7 @@ INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `login_attempts`
+-- Table structure for table `login_attempts`
 --
 
 CREATE TABLE `login_attempts` (
@@ -257,10 +246,28 @@ CREATE TABLE `login_attempts` (
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(2, '::1', 'admin@gmail.com', 1536698670),
+(3, '::1', 'admin@gmail.com', 1536698710),
+(4, '::1', 'admin@gmail.com', 1536698726),
+(5, '::1', 'demoadmin@gmail.com', 1536698907),
+(6, '::1', 'demoadmin@gmail.com', 1536698927),
+(7, '127.0.0.1', 'demoadmin@gmail.com', 1536698941),
+(8, '::1', 'demoadmin@gmail.com', 1536698949),
+(10, '::1', 'administrator', 1536699429),
+(11, '127.0.0.1', 'administrator', 1536699442),
+(12, '::1', 'firasjerbiv2@gmail.com', 1536699476),
+(13, '::1', 'firasjerbiv2@gmail.com', 1536699486),
+(14, '::1', 'firasjerbiv2@gmail.com', 1536699641);
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `messages`
+-- Table structure for table `messages`
 --
 
 CREATE TABLE `messages` (
@@ -278,7 +285,7 @@ CREATE TABLE `messages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `messages`
+-- Dumping data for table `messages`
 --
 
 INSERT INTO `messages` (`id`, `date_creation`, `envoye_par`, `envoye_a`, `sujet`, `message`, `ouvert`, `code`, `urgent`, `username`, `datetime`) VALUES
@@ -312,7 +319,7 @@ INSERT INTO `messages` (`id`, `date_creation`, `envoye_par`, `envoye_a`, `sujet`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `offre`
+-- Table structure for table `offre`
 --
 
 CREATE TABLE `offre` (
@@ -322,7 +329,7 @@ CREATE TABLE `offre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `offre`
+-- Dumping data for table `offre`
 --
 
 INSERT INTO `offre` (`id`, `titre_block`, `priorite`) VALUES
@@ -332,7 +339,7 @@ INSERT INTO `offre` (`id`, `titre_block`, `priorite`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `offres`
+-- Table structure for table `offres`
 --
 
 CREATE TABLE `offres` (
@@ -342,7 +349,7 @@ CREATE TABLE `offres` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `offres`
+-- Dumping data for table `offres`
 --
 
 INSERT INTO `offres` (`id`, `block_id`, `id_produit`) VALUES
@@ -358,7 +365,7 @@ INSERT INTO `offres` (`id`, `block_id`, `id_produit`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `online`
+-- Table structure for table `online`
 --
 
 CREATE TABLE `online` (
@@ -368,16 +375,16 @@ CREATE TABLE `online` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `online`
+-- Dumping data for table `online`
 --
 
 INSERT INTO `online` (`hash`, `ip`, `last_update`) VALUES
-('e3491a2a42acb51b8ad93815aa17b81e', '::1', '2018-08-01 00:28:56');
+('6e7a14dbeca29aed519e3ff38d1708b7', '::1', '2018-09-12 15:47:47');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `page_web_cms`
+-- Table structure for table `page_web_cms`
 --
 
 CREATE TABLE `page_web_cms` (
@@ -390,7 +397,7 @@ CREATE TABLE `page_web_cms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `page_web_cms`
+-- Dumping data for table `page_web_cms`
 --
 
 INSERT INTO `page_web_cms` (`id`, `url_page`, `titre_page`, `motcle_page`, `description_page`, `contenu_page`) VALUES
@@ -399,7 +406,7 @@ INSERT INTO `page_web_cms` (`id`, `url_page`, `titre_page`, `motcle_page`, `desc
 -- --------------------------------------------------------
 
 --
--- Structure de la table `panier`
+-- Table structure for table `panier`
 --
 
 CREATE TABLE `panier` (
@@ -416,7 +423,7 @@ CREATE TABLE `panier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `panier`
+-- Dumping data for table `panier`
 --
 
 INSERT INTO `panier` (`id`, `session_id`, `nom_produit`, `prix`, `tax`, `id_produit`, `quantite_produit`, `date_ajout`, `id_acheteur`, `address_ip`) VALUES
@@ -433,12 +440,13 @@ INSERT INTO `panier` (`id`, `session_id`, `nom_produit`, `prix`, `tax`, `id_prod
 (216, 'ndtl8fnjj0tpmiffl9i7ijbb2ojfqav0', 'Cisaille - Feuillard acier de la marque MANUTAN', '1578.00', '0.00', 51, 5, 1529740016, 0, '::1'),
 (217, '5t2kpuftohleo4vnmep6q1je3djnalon', 'Pack cerclage industriel acier', '1254.00', '0.00', 53, 1, 1529740401, 62, '::1'),
 (218, 'oo8nihbaq5p6239v3nm3o8m20d1odga7', 'Feuillard plastique et acier', '250.00', '0.00', 44, 6, 1529740475, 62, '::1'),
-(220, '0smj20ica7khc2qedn695o03o9pd55j4', 'test2019', '1258.00', '0.00', 57, 1, 1529741303, 3, '::1');
+(220, '0smj20ica7khc2qedn695o03o9pd55j4', 'test2019', '1258.00', '0.00', 57, 1, 1529741303, 3, '::1'),
+(221, 'u1sd19btme7tcd5d5fo6irkvk63tdn8u', 'Pack cerclage industriel acier', '1254.00', '0.00', 53, 25, 1536698521, 63, '::1');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `payement`
+-- Table structure for table `payement`
 --
 
 CREATE TABLE `payement` (
@@ -454,7 +462,7 @@ CREATE TABLE `payement` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `paypal`
+-- Table structure for table `paypal`
 --
 
 CREATE TABLE `paypal` (
@@ -464,7 +472,7 @@ CREATE TABLE `paypal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `paypal`
+-- Dumping data for table `paypal`
 --
 
 INSERT INTO `paypal` (`id`, `date_created`, `post_info`) VALUES
@@ -474,7 +482,7 @@ INSERT INTO `paypal` (`id`, `date_created`, `post_info`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `produits`
+-- Table structure for table `produits`
 --
 
 CREATE TABLE `produits` (
@@ -493,7 +501,7 @@ CREATE TABLE `produits` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `produits`
+-- Dumping data for table `produits`
 --
 
 INSERT INTO `produits` (`id`, `nom_produit`, `prix_produit`, `description_produit`, `image_produit`, `image_mini`, `ancien_prix`, `status`, `url_produit`, `quantite_produit`, `category`, `shipping`) VALUES
@@ -514,7 +522,7 @@ INSERT INTO `produits` (`id`, `nom_produit`, `prix_produit`, `description_produi
 -- --------------------------------------------------------
 
 --
--- Structure de la table `settings`
+-- Table structure for table `settings`
 --
 
 CREATE TABLE `settings` (
@@ -524,7 +532,7 @@ CREATE TABLE `settings` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `shipping`
+-- Table structure for table `shipping`
 --
 
 CREATE TABLE `shipping` (
@@ -535,7 +543,7 @@ CREATE TABLE `shipping` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sliders`
+-- Table structure for table `sliders`
 --
 
 CREATE TABLE `sliders` (
@@ -545,7 +553,7 @@ CREATE TABLE `sliders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `sliders`
+-- Dumping data for table `sliders`
 --
 
 INSERT INTO `sliders` (`id`, `titre_slider`, `target_url`) VALUES
@@ -554,7 +562,7 @@ INSERT INTO `sliders` (`id`, `titre_slider`, `target_url`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `slides`
+-- Table structure for table `slides`
 --
 
 CREATE TABLE `slides` (
@@ -566,7 +574,7 @@ CREATE TABLE `slides` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `slides`
+-- Dumping data for table `slides`
 --
 
 INSERT INTO `slides` (`id`, `parent_id`, `target_url`, `alt_text`, `picture`) VALUES
@@ -578,7 +586,7 @@ INSERT INTO `slides` (`id`, `parent_id`, `target_url`, `alt_text`, `picture`) VA
 -- --------------------------------------------------------
 
 --
--- Structure de la table `stations`
+-- Table structure for table `stations`
 --
 
 CREATE TABLE `stations` (
@@ -599,7 +607,7 @@ CREATE TABLE `stations` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `statut_commande`
+-- Table structure for table `statut_commande`
 --
 
 CREATE TABLE `statut_commande` (
@@ -608,7 +616,7 @@ CREATE TABLE `statut_commande` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `statut_commande`
+-- Dumping data for table `statut_commande`
 --
 
 INSERT INTO `statut_commande` (`id`, `nom_statut`) VALUES
@@ -619,7 +627,7 @@ INSERT INTO `statut_commande` (`id`, `nom_statut`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `traces_client`
+-- Table structure for table `traces_client`
 --
 
 CREATE TABLE `traces_client` (
@@ -636,7 +644,7 @@ CREATE TABLE `traces_client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `traces_client`
+-- Dumping data for table `traces_client`
 --
 
 INSERT INTO `traces_client` (`id`, `session_id`, `nom_produit`, `prix`, `tax`, `id_produit`, `quantite_produit`, `date_ajout`, `id_acheteur`, `address_ip`) VALUES
@@ -646,7 +654,7 @@ INSERT INTO `traces_client` (`id`, `session_id`, `nom_produit`, `prix`, `tax`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -670,16 +678,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(3, '127.0.0.1', 'admin@gmail.com', '$2y$08$koO91Qrl53ZAkCq24z5q2ewCnTWc06hen5mJ/asIe.qP/XFFeK/ae', NULL, 'admin@gmail.com', '', 'yA2teeaX6OMrdvymFc2uhe582d1b15214f90fa39', 1529661199, '2PANiXp59YXQecXQBrlGtO', 1527418089, 1533904184, 1, 'Jerbi', 'Firas', 'TECHNIPACK', '26538845');
+(5, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', NULL, 'admin@admin.com', 'zeaazenjiana75', NULL, NULL, NULL, 19700101, 1536760139, 1, 'aaa', 'aa', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users_groups`
+-- Table structure for table `users_groups`
 --
 
 CREATE TABLE `users_groups` (
@@ -689,18 +697,16 @@ CREATE TABLE `users_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `users_groups`
+-- Dumping data for table `users_groups`
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
-(21, 3, 1),
-(22, 3, 2),
-(23, 3, 3);
+(23, 5, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateurs`
+-- Table structure for table `utilisateurs`
 --
 
 CREATE TABLE `utilisateurs` (
@@ -723,10 +729,17 @@ CREATE TABLE `utilisateurs` (
   `active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`id`, `pseudo`, `nom`, `prenom`, `societe`, `address1`, `address2`, `ville`, `pays`, `code_postal`, `num_tel`, `email`, `date_creation`, `mot_de_passe`, `derniere_connexion`, `code`, `active`) VALUES
+(63, 'demo123', '', '', '', 'zaijaz', 'aznneajzeo', 'kzaeoa', 'aziej', '', '', 'demo@gmail.com', 1536698422, '$2y$11$xUZPvZSJ6ODW8Ad/pme2W.j94tHrJvsolaWNvmXLaGJYYwUUFAfNS', 0, 'xmYlTsCDvByJ', 1);
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `web_cookies`
+-- Table structure for table `web_cookies`
 --
 
 CREATE TABLE `web_cookies` (
@@ -737,7 +750,7 @@ CREATE TABLE `web_cookies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `web_cookies`
+-- Dumping data for table `web_cookies`
 --
 
 INSERT INTO `web_cookies` (`id`, `code_cookie`, `user_id`, `date_expiration`) VALUES
@@ -746,161 +759,161 @@ INSERT INTO `web_cookies` (`id`, `code_cookie`, `user_id`, `date_expiration`) VA
 (15, 'xOZzqCnLuBodKyw7fRzNlYscpkEq4NL3curfiHODkzsxUx6ks2sr5L3aKxOl9f6lpZhyK8eyeqjxIDtxaK89BurghnwtF5RTHqSdshfBIfiQAmORsjPJcsGI', 88, 1526201929);
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `blog`
+-- Indexes for table `blog`
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `categorie_produit`
+-- Indexes for table `categorie_produit`
 --
 ALTER TABLE `categorie_produit`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `chatroom`
+-- Indexes for table `chatroom`
 --
 ALTER TABLE `chatroom`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `ci_sessions`
+-- Indexes for table `ci_sessions`
 --
 ALTER TABLE `ci_sessions`
   ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
--- Index pour la table `commandes`
+-- Indexes for table `commandes`
 --
 ALTER TABLE `commandes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `commentaires`
+-- Indexes for table `commentaires`
 --
 ALTER TABLE `commentaires`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `groups`
+-- Indexes for table `groups`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `login_attempts`
+-- Indexes for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `messages`
+-- Indexes for table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `offre`
+-- Indexes for table `offre`
 --
 ALTER TABLE `offre`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `offres`
+-- Indexes for table `offres`
 --
 ALTER TABLE `offres`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `online`
+-- Indexes for table `online`
 --
 ALTER TABLE `online`
   ADD PRIMARY KEY (`hash`);
 
 --
--- Index pour la table `page_web_cms`
+-- Indexes for table `page_web_cms`
 --
 ALTER TABLE `page_web_cms`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `panier`
+-- Indexes for table `panier`
 --
 ALTER TABLE `panier`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `payement`
+-- Indexes for table `payement`
 --
 ALTER TABLE `payement`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `paypal`
+-- Indexes for table `paypal`
 --
 ALTER TABLE `paypal`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `produits`
+-- Indexes for table `produits`
 --
 ALTER TABLE `produits`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `settings`
+-- Indexes for table `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `shipping`
+-- Indexes for table `shipping`
 --
 ALTER TABLE `shipping`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `sliders`
+-- Indexes for table `sliders`
 --
 ALTER TABLE `sliders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `slides`
+-- Indexes for table `slides`
 --
 ALTER TABLE `slides`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `stations`
+-- Indexes for table `stations`
 --
 ALTER TABLE `stations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `statut_commande`
+-- Indexes for table `statut_commande`
 --
 ALTER TABLE `statut_commande`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `users_groups`
+-- Indexes for table `users_groups`
 --
 ALTER TABLE `users_groups`
   ADD PRIMARY KEY (`id`),
@@ -909,183 +922,183 @@ ALTER TABLE `users_groups`
   ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
 
 --
--- Index pour la table `utilisateurs`
+-- Indexes for table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `web_cookies`
+-- Indexes for table `web_cookies`
 --
 ALTER TABLE `web_cookies`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `blog`
+-- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pour la table `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT pour la table `categorie_produit`
+-- AUTO_INCREMENT for table `categorie_produit`
 --
 ALTER TABLE `categorie_produit`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
--- AUTO_INCREMENT pour la table `chatroom`
+-- AUTO_INCREMENT for table `chatroom`
 --
 ALTER TABLE `chatroom`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pour la table `commandes`
+-- AUTO_INCREMENT for table `commandes`
 --
 ALTER TABLE `commandes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
--- AUTO_INCREMENT pour la table `commentaires`
+-- AUTO_INCREMENT for table `commentaires`
 --
 ALTER TABLE `commentaires`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT pour la table `groups`
+-- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `login_attempts`
+-- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT pour la table `messages`
+-- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- AUTO_INCREMENT pour la table `offre`
+-- AUTO_INCREMENT for table `offre`
 --
 ALTER TABLE `offre`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT pour la table `offres`
+-- AUTO_INCREMENT for table `offres`
 --
 ALTER TABLE `offres`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
--- AUTO_INCREMENT pour la table `page_web_cms`
+-- AUTO_INCREMENT for table `page_web_cms`
 --
 ALTER TABLE `page_web_cms`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pour la table `panier`
+-- AUTO_INCREMENT for table `panier`
 --
 ALTER TABLE `panier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
--- AUTO_INCREMENT pour la table `payement`
+-- AUTO_INCREMENT for table `payement`
 --
 ALTER TABLE `payement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `paypal`
+-- AUTO_INCREMENT for table `paypal`
 --
 ALTER TABLE `paypal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pour la table `produits`
+-- AUTO_INCREMENT for table `produits`
 --
 ALTER TABLE `produits`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
--- AUTO_INCREMENT pour la table `settings`
+-- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `shipping`
+-- AUTO_INCREMENT for table `shipping`
 --
 ALTER TABLE `shipping`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `sliders`
+-- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT pour la table `slides`
+-- AUTO_INCREMENT for table `slides`
 --
 ALTER TABLE `slides`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT pour la table `stations`
+-- AUTO_INCREMENT for table `stations`
 --
 ALTER TABLE `stations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `statut_commande`
+-- AUTO_INCREMENT for table `statut_commande`
 --
 ALTER TABLE `statut_commande`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT pour la table `users_groups`
+-- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT pour la table `utilisateurs`
+-- AUTO_INCREMENT for table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT pour la table `web_cookies`
+-- AUTO_INCREMENT for table `web_cookies`
 --
 ALTER TABLE `web_cookies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `users_groups`
+-- Constraints for table `users_groups`
 --
 ALTER TABLE `users_groups`
   ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
