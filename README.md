@@ -27,3 +27,7 @@ To access the admin dashboard (yourprojecturl/auth/login)
 Username :admin@admin.com
 
 Password:password
+
+
+## Tutorial :
+https://www.youtube.com/watch?v=ZQXuit0n3jE&t=8s
