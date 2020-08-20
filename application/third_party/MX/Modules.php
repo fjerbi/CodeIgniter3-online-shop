@@ -73,7 +73,7 @@ class Modules
 	
 	/** Load a module controller **/
 	public static function load($module) {
-		(is_array($module)) ? list($module, $params) = each($module) : $params = NULL;	
+		(is_array($module)) ? list($module, $params) = Self::makeEach($module) : $params = NULL; 
 		
 		/* get the requested controller class name */
 		$alias = strtolower(basename($module));
@@ -201,5 +201,19 @@ class Modules
 				return explode('/', $module.'/'.$val);
 			}
 		}
+		
 	}
+	public static function makeEach(&$arr)
+    {
+            $key = key($arr);
+
+            $result = ($key === null) 
+                ? false 
+                : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
+
+            next($arr);
+
+            return $result;
+    } 
+	
 }
