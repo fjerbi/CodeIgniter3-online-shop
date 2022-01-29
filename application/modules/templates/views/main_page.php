@@ -126,16 +126,7 @@ curl_close($ch);
 // Decode JSON response:
 $exchangeRates = json_decode($json, true);
 
-// Access the exchange rate values, e.g. GBP:
-?><b style="color: black;">  Pound :<?php echo $exchangeRates['rates']['GBP'];
 
-?> <p style="color: black;">Dinar Tunisien :<?php echo $exchangeRates['rates']['TND'];
-?><p style="color: black;"> Dollar  :<?php echo $exchangeRates['rates']['USD'];
-?><p style="color: black;">Yen Japonais  :<?php echo $exchangeRates['rates']['JPY'];
-?><p style="color: black;"> Dollar Australien  :<?php echo $exchangeRates['rates']['AUD'];
-?> <p style="color: black;">Riyal de Qatar  :<?php echo $exchangeRates['rates']['QAR'];
-?> <p style="color: black;">Livre de Syrie  :<?php echo $exchangeRates['rates']['SYP'];
-?> <p style="color: black;">Yuan Chinois  :<?php echo $exchangeRates['rates']['CNY'];
 }
 ?>
 
